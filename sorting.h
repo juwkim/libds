@@ -51,7 +51,7 @@ void CountingSort(Data* list, int n);
 void Counting(Data* list, int n, int exp);
 void RadixSort(Data* list, int n);
 
-// Sort elements at gap intervals.
+// shell_sort
 void sortGapInsertion(int list[], int first, int last, int gap);
 void shell_sort(int list[], int n);
 
