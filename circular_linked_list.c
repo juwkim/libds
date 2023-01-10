@@ -19,6 +19,7 @@ Node *CreateNode(Data item)
 		exit(EXIT_FAILURE);
 
 	newNode->item = item;
+	return (newNode);
 }
 
 void InsertInitItem(CircularList* plist, Data item)
