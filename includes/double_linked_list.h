@@ -13,25 +13,22 @@
 #ifndef DOUBLE_LINKED_LIST_H
 # define DOUBLE_LINKED_LIST_H
 
-# include <stdio.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
-typedef int Data;
-typedef struct _Node
+typedef int	t_data;
+
+typedef struct s_node
 {
-	Data item;
-	struct _Node* prev;
-	struct _Node* next;
-} Node;
+	t_data			item;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
 
-typedef struct
+typedef struct s_double_linked_list
 {
-	Node* head;
-	int len;
-} DoubleLinkedList;
+	size_t	size;
+	t_node	*head;
+}	t_double_linked_list;
 
-void InitList(DoubleLinkedList* plist);
-void InsertMiddle(DoubleLinkedList* plist, int pos, Data item);
-void RemoveMiddle(DoubleLinkedList* plist, int pos);
-
-#endif
+#endif // DOUBLE_LINKED_LIST_H

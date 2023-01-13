@@ -18,32 +18,33 @@
 
 # define LIST_SIZE 100
 
-typedef int Data;
-typedef struct
+typedef int	t_data;
+
+typedef struct s_list
 {
-	Data items[LIST_SIZE];
-	int len;
-} ArrayList;
+	size_t	size;
+	t_data	items[LIST_SIZE];
+}	t_list;
 
-// Make a list empty.
-void InitList(ArrayList* plist);
+// usils.c
+void	init(t_list *list);
+bool	is_empty(t_list *list);
+bool	is_full(t_list *list);
+size_t	size(t_list *list);
 
-// Check whether the list is empty.
-bool IsEmpty(ArrayList* plist);
+// push.c
+void	push_front(t_list *list, t_data item);
+void	push_back(t_list *list, t_data item);
+void	insert(t_list *list, int pos, t_data item);
 
-// Check whether the list is full.
-bool IsFull(ArrayList* plist);
+// pop.c
+void	pop_front(t_list *list);
+void	pop_back(t_list *list);
+void	erase(t_list *list, int pos);
 
-// Insert an item at the k-th position.
-void InsertMiddle(ArrayList* plist, int pos, Data item);
-
-// Remove an item at the k-th position.
-void RemoveMiddle(ArrayList* plist, int pos);
-
-// Read an item at the k-th position.
-Data ReadItem(ArrayList* plist, int pos);
-
-// Print each item in a list in sequence.
-void PrintList(ArrayList* plist);
+// getter.c
+t_data	front(t_list *list);
+t_data	back(t_list *list);
+t_data	get_item(t_list *list, int pos);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_linked_list.c                               :+:      :+:    :+:   */
+/*   t_double_linked_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,10 +12,10 @@
 
 #include "double_linked_list.h"
 
-void InitList(DoubleLinkedList* plist)
+void	init(t_double_linked_list *list)
 {
-	Node *dummy1 = (Node*) malloc(sizeof(Node));
-	Node *dummy2 = (Node*) malloc(sizeof(Node));
+	t_node	*dummy1 = (t_node*) malloc(sizeof(t_node));
+	t_node	*dummy2 = (t_node*) malloc(sizeof(t_node));
 
 	if (dummy1 == NULL || dummy2 == NULL)
 		exit(EXIT_FAILURE);
@@ -26,50 +26,50 @@ void InitList(DoubleLinkedList* plist)
 	dummy2->prev = dummy1;
 	dummy2->next = NULL;
 	
-	plist->head = dummy1;
-	plist->len = 0;
+	list->head = dummy1;
+	list->len = 0;
 }
 
-void InsertMiddle(DoubleLinkedList* plist, int pos, Data item)
+void InsertMiddle(t_double_linked_list* list, int pos, Data item)
 {
-	// Create a new node.
-	Node *newNode = (Node*) malloc(sizeof(Node));
-	if (newNode == NULL)
+	// Create a new t_node.
+	t_node *newt_node = (t_node*) malloc(sizeof(t_node));
+	if (newt_node == NULL)
 		exit(EXIT_FAILURE);
 
-	newNode->item = item;
-	newNode->prev = NULL;
-	newNode->next = NULL;
+	newt_node->item = item;
+	newt_node->prev = NULL;
+	newt_node->next = NULL;
 
 	// Move the cur pointer to the (pos - 1)-th position.
-	Node *cur = plist->head;
+	t_node *cur = list->head;
 	while (pos--)
 		cur = cur->next;
 
-	// Insert the new node to the pos-th position.
-	newNode->prev = cur;
-	newNode->next = cur->next;
-	cur->next->prev = newNode;
-	cur->next = newNode;
-	plist->len++;
+	// Insert the new t_node to the pos-th position.
+	newt_node->prev = cur;
+	newt_node->next = cur->next;
+	cur->next->prev = newt_node;
+	cur->next = newt_node;
+	list->len++;
 }
 
-void RemoveMiddle(DoubleLinkedList* plist, int pos)
+void RemoveMiddle(t_double_linked_list* list, int pos)
 {
-	if (plist->len == 0 || pos < 0 || pos >= plist->len)
+	if (list->len == 0 || pos < 0 || pos >= list->len)
 		exit(EXIT_FAILURE);
 
 	// Move the cur pointer to the (pos-1)-th position.
-	Node *cur = plist->head;
+	t_node *cur = list->head;
 	while (pos--)
 		cur = cur->next;
 
-	// Connect adjacent nodes to remove the pos-th node.
-	Node *temp = cur->next;
+	// Connect adjacent t_nodes to remove the pos-th t_node.
+	t_node *temp = cur->next;
 	temp->next->prev = cur;
 	cur->next = temp->next;
 
-	// Remove the node to the pos-th position.
-	plist->len--;
+	// Remove the t_node to the pos-th position.
+	list->len--;
 	free(temp);
 }

@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/14 05:05:36 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/14 06:00:23 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ARFLAGS				:= 	-rcs
 
 # Define the directories
 
-SRC_DIR				:=	circular_linked_list
+SRC_DIR				:=	circular_linked_list list
 OBJ_DIR				:=	obj
 INC_DIR				:=	includes
 

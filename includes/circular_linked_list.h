@@ -24,20 +24,17 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-
 typedef struct s_circular_list
 {
-	int		size;
+	size_t	size;
 	t_node	*tail;
 }	t_circular_list;
 
-// is_empty.c
+// utils.c
+void	init(t_circular_list *list);
+void	destroy(t_circular_list *list);
 bool	is_empty(t_circular_list *list);
-
-// size.c
 size_t	size(t_circular_list *list);
-
-// create_node.c
 t_node	*create_node(t_data item);
 
 // push.c
@@ -50,7 +47,7 @@ void	pop_front(t_circular_list *list);
 void	pop_back(t_circular_list *list);
 void	erase(t_circular_list *list, int pos);
 
-// get_item.c
+// getter.c
 t_data	front(t_circular_list *list);
 t_data	back(t_circular_list *list);
 t_data	get_item(t_circular_list *list, int pos);

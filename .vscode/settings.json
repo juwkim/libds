@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdbool.h": "c",
-        "circular_linked_list.h": "c"
+        "circular_linked_list.h": "c",
+        "double_linked_list.h": "c"
     }
 }
