@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:40:13 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 06:17:58 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 07:31:04 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_node	*create_node(t_data item)
 	return (new_node);
 }
 
-static void	push_init_item(t_circular_list *list, t_data item)
+static void	push_init_item(t_circular_linked_list *list, t_data item)
 {
 	t_node *const	new_node = create_node(item);
 
@@ -31,7 +31,7 @@ static void	push_init_item(t_circular_list *list, t_data item)
 	++list->size;
 }
 
-void	push_front(t_circular_list *list, t_data item)
+void	push_front(t_circular_linked_list *list, t_data item)
 {
 	if (is_empty(list))
 		push_init_item(list, item);
@@ -39,7 +39,7 @@ void	push_front(t_circular_list *list, t_data item)
 		insert(list, 0, item);
 }
 
-void	push_back(t_circular_list *list, t_data item)
+void	push_back(t_circular_linked_list *list, t_data item)
 {
 	t_node	*new_node;
 
@@ -55,7 +55,7 @@ void	push_back(t_circular_list *list, t_data item)
 	}
 }
 
-void	insert(t_circular_list *list, int pos, t_data item)
+void	insert(t_circular_linked_list *list, int pos, t_data item)
 {
 	t_node	*cur;
 	t_node	*new_node;

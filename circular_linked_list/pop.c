@@ -6,20 +6,20 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:54:26 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 05:16:59 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 07:31:04 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circular_linked_list.h"
 
-static void	pop_init_item(t_circular_list *list)
+static void	pop_init_item(t_circular_linked_list *list)
 {
 	free(list->tail);
 	--list->size;
 	list->tail = NULL;
 }
 
-void	pop_front(t_circular_list *list)
+void	pop_front(t_circular_linked_list *list)
 {
 	if (list->size == 1)
 		pop_init_item(list);
@@ -27,7 +27,7 @@ void	pop_front(t_circular_list *list)
 		erase(list, 0);
 }
 
-void	pop_back(t_circular_list *list)
+void	pop_back(t_circular_linked_list *list)
 {
 	int		i;
 	t_node	*cur;
@@ -49,7 +49,7 @@ void	pop_back(t_circular_list *list)
 	}
 }
 
-void	erase(t_circular_list *list, int pos)
+void	erase(t_circular_linked_list *list, int pos)
 {
 	t_node	*cur;
 	t_node	*temp;

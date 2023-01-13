@@ -47,4 +47,9 @@ t_data	front(t_list *list);
 t_data	back(t_list *list);
 t_data	get_item(t_list *list, int pos);
 
-#endif
+// operation.c
+void	print(t_list *list);
+void	reverse(t_list *list);
+t_list	*concatenate(t_list *list1, t_list *list2);
+
+#endif // LIST_H

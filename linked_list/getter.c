@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 06:55:49 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 06:49:30 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 07:50:52 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "single_linked_list.h"
+#include "linked_list.h"
 
-void	pop_front(t_single_linked_list *list)
+t_data	front(t_linked_list *list)
 {
-	erase(list, 0);
+	return (get_item(list, 0));
 }
 
-void	pop_back(t_single_linked_list *list)
+t_data	back(t_linked_list *list)
 {
-	erase(list, list->size - 1);
+	return (get_item(list, list->size - 1));
 }
 
-void	erase(t_single_linked_list *list, int pos)
+t_data	get_item(t_linked_list *list, int pos)
 {
 	t_node	*cur;
-	t_node	*temp;
 
-	cur = list->head;
+	cur = list->head->next;
 	while (pos--)
 		cur = cur->next;
-
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp);
+	return (cur->item);
 }
