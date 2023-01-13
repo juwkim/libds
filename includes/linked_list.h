@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-
+# include "../../includes/ft_printf.h"
 typedef int	t_data;
 
 typedef struct s_node

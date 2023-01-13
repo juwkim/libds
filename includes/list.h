@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
-
+# include "../../includes/ft_printf.h"
 # define LIST_SIZE 100
 
 typedef int	t_data;

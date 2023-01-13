@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 08:04:06 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 08:25:47 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print(t_list *list)
 {
-	int	cur;
+	size_t	cur;
 
 	cur = 0;
 	while (cur < list->size)
@@ -23,9 +23,9 @@ void	print(t_list *list)
 
 void	reverse(t_list *list)
 {
-	int		left;
-	int		right;
-	t_data	temp;
+	size_t		left;
+	size_t		right;
+	t_data		temp;
 
 	left = 0;
 	right = list->size - 1;
@@ -42,7 +42,7 @@ void	reverse(t_list *list)
 t_list	*concatenate(t_list *list1, t_list *list2)
 {
 	t_list *const	list = (t_list *) malloc(sizeof(t_list));
-	int				cur;
+	size_t			cur;
 
 	if (list == NULL)
 		exit(EXIT_FAILURE);
