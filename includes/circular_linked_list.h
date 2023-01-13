@@ -14,28 +14,45 @@
 # define CIRCULAR_LINKED_LIST_H
 
 # include <stdlib.h>
+# include <stdbool.h>
 
-typedef int Data;
-typedef struct _Node
+typedef int	t_data;
+
+typedef struct s_node
 {
-	Data item;
-	struct _Node* next;
-} Node;
+	t_data			item;
+	struct s_node	*next;
+}	t_node;
 
-typedef struct
+
+typedef struct s_circular_list
 {
-	Node* tail;
-	int len;
-} CircularList;
+	int		size;
+	t_node	*tail;
+}	t_circular_list;
 
-Node *CreateNode(Data item);
-void InsertInitItem(CircularList* plist, Data item);
-void InsertFirst(CircularList* plist, Data item);
-void InsertLast(CircularList* plist, Data item);
-void InsertMiddle(CircularList* plist, int pos, Data item);
-void RemoveInitItem(CircularList* plist);
-void RemoveFirst(CircularList* plist);
-void RemoveLast(CircularList* plist);
-void RemoveMiddle(CircularList* plist, int pos);
+// is_empty.c
+bool	is_empty(t_circular_list *list);
 
-#endif
+// size.c
+size_t	size(t_circular_list *list);
+
+// create_node.c
+t_node	*create_node(t_data item);
+
+// push.c
+void	push_front(t_circular_list *list, t_data item);
+void	push_back(t_circular_list *list, t_data item);
+void	insert(t_circular_list *list, int pos, t_data item);
+
+// pop.c
+void	pop_front(t_circular_list *list);
+void	pop_back(t_circular_list *list);
+void	erase(t_circular_list *list, int pos);
+
+// get_item.c
+t_data	front(t_circular_list *list);
+t_data	back(t_circular_list *list);
+t_data	get_item(t_circular_list *list, int pos);
+
+#endif // CIRCULAR_LINKED_LIST_H
