@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/14 06:00:23 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/14 07:14:05 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ARFLAGS				:= 	-rcs
 
 # Define the directories
 
-SRC_DIR				:=	circular_linked_list list
+SRC_DIR				:=	circular_linked_list list single_linked_list
 OBJ_DIR				:=	obj
 INC_DIR				:=	includes
 
@@ -31,7 +31,7 @@ OBJS				:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 # Define the variables for progress bar
 
 TOTAL_FILES			:=	$(shell find . -type f -name '*.c' | wc -l)
-COMPILED_FILES		=	0
+COMPILED_FILES		:=	0
 STEP				:=	100
 
 # Define the name
@@ -69,7 +69,7 @@ fclean: clean
 
 re: fclean
 	@$(MAKE) all
-	@printf "$(GREEN)Cleaned and rebuilt everything for data_structure!\n$(DEF_COLOR)"
+	@printf "$(GREEN)Cleaned and Rebuilt everything for data_structure!\n$(DEF_COLOR)"
 
 .PHONY:	all clean fclean re dir_guard norm
 

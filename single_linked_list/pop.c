@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 03:41:27 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 06:17:31 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 06:55:49 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "circular_linked_list.h"
+#include "single_linked_list.h"
 
-void	init(t_circular_list *list)
+void	pop_front(t_single_linked_list *list)
 {
-	list->size = 0;
-	list->tail = NULL;
+	erase(list, 0);
 }
 
-void	destroy(t_circular_list *list)
+void	pop_back(t_single_linked_list *list)
 {
-	while (is_empty(list) == false)
-		pop_front(list);
+	erase(list, list->size - 1);
 }
 
-bool	is_empty(t_circular_list *list)
+void	erase(t_single_linked_list *list, int pos)
 {
-	return (list->size == 0);
-}
+	t_node	*cur;
+	t_node	*temp;
 
-size_t	size(t_circular_list *list)
-{
-	return (list->size);
+	cur = list->head;
+	while (pos--)
+		cur = cur->next;
+
+	temp = cur->next;
+	cur->next = cur->next->next;
+	--list->size;
+	free(temp);
 }

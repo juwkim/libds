@@ -6,11 +6,21 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 03:40:13 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 05:17:06 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 06:17:58 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "circular_linked_list.h"
+
+static t_node	*create_node(t_data item)
+{
+	t_node *const	new_node = (t_node*) malloc(sizeof(t_node));
+
+	if (new_node == NULL)
+		exit(EXIT_FAILURE);
+	new_node->item = item;
+	return (new_node);
+}
 
 static void	push_init_item(t_circular_list *list, t_data item)
 {

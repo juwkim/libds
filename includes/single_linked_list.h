@@ -10,52 +10,54 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SINGLE_LINKED_LIST
-# define SINGLE_LINKED_LIST
+#ifndef SINGLE_LINKED_LIST_H
+# define SINGLE_LINKED_LIST_H
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
 
-typedef int Data;
-typedef struct _Node
+typedef int	t_data;
+
+typedef struct s_node
 {
-	Data item;
-	struct _Node *next;
-} Node;
+	t_data			item;
+	struct s_node	*next;
+}	t_node;
 
-typedef struct
+typedef struct s_single_linked_list
 {
-	Node *head;
-	int len;
-} LinkedList;
+	size_t	size;
+	t_node	*head;
+}	t_single_linked_list;
 
-// Make a list empty.
-void InitList(LinkedList* plist);
 
-// Check whether the list is empty.
-bool IsEmpty(LinkedList* plist);
+// usils.c
+void					init(t_single_linked_list *list);
+void					destroy(t_single_linked_list *list);
+bool					is_empty(t_single_linked_list *list);
+size_t					size(t_single_linked_list *list);
 
-// Insert an item at the pos-th position.
-void InsertMiddle(LinkedList* plist, int pos, Data item);
+// push.c
+void					push_front(t_single_linked_list *list, t_data item);
+void					push_back(t_single_linked_list *list, t_data item);
+void					insert(t_single_linked_list *list, \
+								int pos, t_data item);
 
-// Remove an item at the pos-th position.
-void RemoveMiddle(LinkedList* plist, int pos);
+// pop.c
+void					pop_front(t_single_linked_list *list);
+void					pop_back(t_single_linked_list *list);
+void					erase(t_single_linked_list *list, int pos);
 
-void RemoveFirst(LinkedList* plist);
+// getter.c
+t_data					front(t_single_linked_list *list);
+t_data					back(t_single_linked_list *list);
+t_data					get_item(t_single_linked_list *list, int pos);
 
-// Read an item at the pos-th position.
-Data ReadItem(LinkedList* plist, int pos);
+// operation.c
+void					print_list(t_single_linked_list *list);
+void					reverse(t_single_linked_list *list);
+t_single_linked_list	*concatenate(t_single_linked_list *list1, \
+										t_single_linked_list *list2);
 
-// Print each item in a list in sequence.
-void PrintList(LinkedList* plist);
-
-// Remove all nodes in a list in sequence.
-void ClearList(LinkedList* plist);
-
-LinkedList* Concatenate(LinkedList* plist1, LinkedList* plist2);
-
-// Make the list in reverse sequence.
-void Reverse(LinkedList* plist);
-
-#endif
+#endif // SINGLE_LINKED_LIST_H

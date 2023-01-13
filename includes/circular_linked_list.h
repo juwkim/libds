@@ -31,25 +31,24 @@ typedef struct s_circular_list
 }	t_circular_list;
 
 // utils.c
-void	init(t_circular_list *list);
-void	destroy(t_circular_list *list);
-bool	is_empty(t_circular_list *list);
-size_t	size(t_circular_list *list);
-t_node	*create_node(t_data item);
+void			init(t_circular_list *list);
+void			destroy(t_circular_list *list);
+bool			is_empty(t_circular_list *list);
+size_t			size(t_circular_list *list);
 
 // push.c
-void	push_front(t_circular_list *list, t_data item);
-void	push_back(t_circular_list *list, t_data item);
-void	insert(t_circular_list *list, int pos, t_data item);
+void			push_front(t_circular_list *list, t_data item);
+void			push_back(t_circular_list *list, t_data item);
+void			insert(t_circular_list *list, int pos, t_data item);
 
 // pop.c
-void	pop_front(t_circular_list *list);
-void	pop_back(t_circular_list *list);
-void	erase(t_circular_list *list, int pos);
+void			pop_front(t_circular_list *list);
+void			pop_back(t_circular_list *list);
+void			erase(t_circular_list *list, int pos);
 
 // getter.c
-t_data	front(t_circular_list *list);
-t_data	back(t_circular_list *list);
-t_data	get_item(t_circular_list *list, int pos);
+t_data			front(t_circular_list *list);
+t_data			back(t_circular_list *list);
+t_data			get_item(t_circular_list *list, int pos);
 
 #endif // CIRCULAR_LINKED_LIST_H
