@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/14 08:45:17 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/14 08:53:14 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ NAME				:=	data_structure.a
 
 # Define the rules
 
-all: $(NAME)
+all:
+	@$(MAKE) -j $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
@@ -68,7 +69,7 @@ fclean: clean
 	@printf "$(CYAN)[DATA_STRUCTURE]:\texec. files$(DEF_COLOR)$(GREEN)	=> Cleaned!\n$(DEF_COLOR)"
 
 re: fclean
-	@$(MAKE) all
+	@$(MAKE) -j all
 	@printf "$(GREEN)Cleaned and Rebuilt everything for data_structure!\n$(DEF_COLOR)"
 
 .PHONY:	all clean fclean re dir_guard norm
