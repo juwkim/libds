@@ -34,7 +34,7 @@ make fclean
 make re
 ```
 
-- To check this repository complies with [norminatte](https://github.com/42School/norminette):
+- To check this repository complies with [norminette](https://github.com/42School/norminette):
 
 ```
 make re
