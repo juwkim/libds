@@ -10,36 +10,44 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DYNAMIC_QUEUE_H
-# define DYNAMIC_QUEUE_H
+#ifndef DYNAMIC_DQUEUE_H
+# define DYNAMIC_DQUEUE_H
 
 # include <stdlib.h>
 # include <stdbool.h>
 
-typedef int Data;
-typedef struct _Node
+typedef int	t_data;
+
+typedef struct s_node
 {
-	Data item;
-	struct _Node* next;
-} Node;
+	t_data			item;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
 
-typedef struct
+typedef struct s_dqueue
 {
-	Node* front;
-	Node* rear;
-} DQueue;
+	size_t	size;
+	t_node	*head;
+	t_node	*tail;
+}	t_dqueue;
 
-// Make a queue empty.
-void InitQueue(DQueue* pqueue);
+// utils.c
+void	init(t_dqueue *dq);
+void	destroy(t_dqueue *dq);
+bool	is_empty(t_dqueue *dq);
+size_t	size(t_dqueue *dq);
 
-// Check whether a queue is empty.
-bool IsEmpty(DQueue* pqueue);
+// push.c
+void	push_front(t_dqueue *dq, t_data item);
+void	push_back(t_dqueue *dq, t_data item);
 
-// Read the item at the front.
-Data Peek(DQueue* pqueue);
+// pop.c
+void	pop_front(t_dqueue *dq);
+void	pop_back(t_dqueue *dq);
 
-void EnQueue(DQueue* pqueue, Data item);
+// getter.c
+t_data	front(t_dqueue *dq);
+t_data	back(t_dqueue *dq);
 
-void DeQueue(DQueue* pqueue);
-
-#endif
+#endif // DYNAMIC_DQUEUE_H

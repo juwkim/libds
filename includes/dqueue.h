@@ -10,38 +10,40 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef QUEUE_H
-# define QUEUE_H
+#ifndef DQUEUE_H
+# define DQUEUE_H
 
-# include <stdlib.h>
+# include <stddef.h>
 # include <stdbool.h>
 
 # define QUEUE_SIZE 100
 
-typedef int Data;
-typedef struct
+typedef int	t_data;
+
+typedef struct s_dqueue
 {
-	int front;
-	int	rear;
-	Data items[QUEUE_SIZE];
-} Queue;
+	int		head;
+	int		tail;
+	size_t	size;
+	t_data	items[QUEUE_SIZE];
+}	t_dqueue;
 
-// Make a queue empty.
-void InitQueue(Queue* pqueue);
+// utils.c
+void	init(t_dqueue *dq);
+bool	is_empty(t_dqueue *dq);
+bool	is_full(t_dqueue *dq);
+size_t	size(t_dqueue *dq);
 
-// Check whether a queue is full.
-bool IsFull(Queue* pqueue);
+// push.c
+void	push_front(t_dqueue *dq, t_data item);
+void	push_back(t_dqueue *dq, t_data item);
 
-// Check whether a queue is empty.
-bool IsQEmpty(Queue* pqueue);
+// pop.c
+void	pop_front(t_dqueue *dq);
+void	pop_back(t_dqueue *dq);
 
-// Read the item at the front.
-Data QPeek(Queue* pqueue);
-
-// Insert an item at the rear.
-void EnQueue(Queue* pqueue, Data item);
-
-// Delete an item at the front.
-void DeQueue(Queue* pqueue);
+// getter.c
+t_data	front(t_dqueue *dq);
+t_data	back(t_dqueue *dq);
 
 #endif
