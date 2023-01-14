@@ -10,49 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TREE_H
-# define TREE_H
+#ifndef BINARY_SEARCH_TREE_H
+# define BINARY_SEARCH_TREE_H
 
 # include <stdio.h>
 # include <stdlib.h>
 
-# include "queue.h"
+# include "dqueue.h"
+# include "libft_headers/ft_math.h"
+# include "libft_headers/ft_printf.h"
 
-typedef int BData;
-typedef struct _bTreeNode
+typedef int	t_data;
+
+typedef struct s_node
 {
-	BData key;
-	struct _bTreeNode *left_child;
-	struct _bTreeNode *right_child;
-} BTreeNode;
+	t_data			key;
+	struct s_node	*left;
+	struct s_node	*right;
+}	t_node;
 
-// Create a new node.
-BTreeNode* CreateNode(BData key);
+// utils.c
+t_node	*create_node(t_data key);
+size_t	get_height(t_node *root);
+size_t	count_nodes(t_node	*root);
 
-// Destroy a node.
-void DestroyNode(BTreeNode *node);
+// tree.c
+t_node	*bst_search(t_node *root, t_data key);
+t_node	*bst_insert(t_node *root, t_data key);
+t_node	*bst_remove(t_node *root, t_data key);
 
-// Conect the root to a left-side node.
-void CreateLeftSubtree(BTreeNode* root, BTreeNode* left);
+// traversal.c
+void	inorder(t_node *root);
+void	preorder(t_node *root);
+void	postorder(t_node *root);
+void	levelorder(t_node *root);
 
-// Conect the root to a right-side node.
-void CreateRightSubtree(BTreeNode* root, BTreeNode* right);
-
-// # of nodes from the node
-int Nodes(BTreeNode* node);
-
-int Max(int a, int b);
-
-// Height from the node
-int Height(BTreeNode* node);
-
-// Traversal
-void Inorder(BTreeNode* root);
-void Preorder(BTreeNode* root);
-void Postorder(BTreeNode* root);
-void Levelorder(BTreeNode* root);
-
-// Remove key
-void Remove(BTreeNode* root, BData key);
-
-#endif
+#endif // BINARY_SEARCH_TREE_H

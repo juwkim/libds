@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/14 11:30:10 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/14 13:10:56 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ ARFLAGS				:= 	-rcs
 
 SRC_DIR				:=	list linked_list circular_linked_list double_linked_list
 SRC_DIR				+=	dqueue dynamic_dqueue
+SRC_DIR				+=	graph
+SRC_DIR				+=	binary_search_tree
 
 OBJ_DIR				:=	obj
 INC_DIR				:=	includes

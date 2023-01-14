@@ -15,37 +15,30 @@
 
 # include <stdlib.h>
 
-# include "stack.h"
-# include "queue.h"
+# include "dqueue.h"
+# include "libft_headers/ft_printf.h"
 
-typedef struct _GNode
+typedef struct s_node
 {
-	int id;
-	struct _GNode* next;
-} GNode;
+	int				id;
+	struct s_node	*next;
+}	t_node;
 
-typedef struct
+typedef struct s_graph
 {
-	int size;
-	GNode** heads;
-} Graph;
+	size_t	size;
+	t_node	**heads;
+}	t_graph;
 
-// Create a graph.
-void CreateGraph(Graph* pgraph, int size);
+// graph.c
+void	init(t_graph *graph, size_t size);
+void	destroy(t_graph *graph);
+t_node	*create_node(int id);
+void	add_edge(t_graph *graph, int src, int dst);
+void	print(t_graph *graph);
 
-// Destroy a graph.
-void DestroyGraph(Graph* pgraph);
-
-// Add an undirected edge from src to dest.
-void AddEdge(Graph* pgraph, int src, int dest);
-
-// Print a graph for each vertex.
-void PrintGraph(Graph* pgraph);
-
-// Depth first search
-void DFS(Graph* pgraph);
-		
-// Breadth first search
-void BFS(Graph* pgraph);
+// search.c
+void	bfs(t_graph *graph);
+void	dfs(t_graph *graph);
 
 #endif

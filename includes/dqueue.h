@@ -29,7 +29,7 @@ typedef struct s_dqueue
 }	t_dqueue;
 
 // utils.c
-void	init(t_dqueue *dq);
+void	dq_init(t_dqueue *dq);
 bool	is_empty(t_dqueue *dq);
 bool	is_full(t_dqueue *dq);
 size_t	size(t_dqueue *dq);
@@ -46,4 +46,4 @@ void	pop_back(t_dqueue *dq);
 t_data	front(t_dqueue *dq);
 t_data	back(t_dqueue *dq);
 
-#endif
+#endif // DQUEUE_H

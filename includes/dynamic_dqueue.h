@@ -33,7 +33,7 @@ typedef struct s_dqueue
 }	t_dqueue;
 
 // utils.c
-void	init(t_dqueue *dq);
+void	dq_init(t_dqueue *dq);
 void	destroy(t_dqueue *dq);
 bool	is_empty(t_dqueue *dq);
 size_t	size(t_dqueue *dq);

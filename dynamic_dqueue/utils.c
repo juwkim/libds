@@ -6,13 +6,13 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:47:41 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 11:19:27 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 12:32:17 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dynamic_dqueue.h"
 
-void	init(t_dqueue *dq)
+void	dq_init(t_dqueue *dq)
 {
 	dq->size = 0;
 	dq->head = NULL;
