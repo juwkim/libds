@@ -50,7 +50,7 @@ all:
 
 $(NAME) : $(OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
-	@printf "\n$(MAGENTA)[DATA_STRUCTURE] Linking Success\n$(DEF_COLOR)"
+	@printf "\n$(MAGENTA)[DATA_STRUCTURE] Make Success\n$(DEF_COLOR)"
 
 $(OBJ_DIR)/%.o : %.c | dir_guard
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $^ -o $@
