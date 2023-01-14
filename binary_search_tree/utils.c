@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:20:34 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 14:39:46 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 15:03:10 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ t_node	*create_node(t_data key)
 	new_node->left = NULL;
 	new_node->right = NULL;
 	return (new_node);
+}
+
+void	destroy(t_node *root)
+{
+	if (root == NULL)
+		return ;
+	destroy(root->left);
+	destroy(root->right);
+	free(root);
 }
 
 size_t	get_height(t_node *root)
