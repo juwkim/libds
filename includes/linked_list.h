@@ -32,7 +32,6 @@ typedef struct s_linked_list
 	t_node	*head;
 }	t_linked_list;
 
-
 // usils.c
 void			init(t_linked_list *list);
 void			destroy(t_linked_list *list);

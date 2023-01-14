@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 07:39:17 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 10:30:59 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,26 @@ void	reverse(t_linked_list *list)
 	list->head->next = cur;
 }
 
-t_linked_list	*concatenate(t_linked_list *list1, \
-										t_linked_list *list2)
+t_linked_list	*concatenate(t_linked_list *list1, t_linked_list *list2)
 {
-	t_node	*cur;
+	t_linked_list *const	list = \
+							(t_linked_list *) malloc(sizeof(t_linked_list));
+	t_node					*cur;
 
-	if (list1->head->next == NULL)
-		return (list2);
-	else if (list2->head->next == NULL)
-		return (list1);
-	else
+	if (list == NULL)
+		exit(EXIT_FAILURE);
+	init(list);
+	cur = list1->head->next;
+	while (cur)
 	{
-		cur = list1->head->next;
-		while (cur->next != NULL)
-			cur = cur->next;
-		cur->next = list2->head->next;
-		free(list2->head);
-		return (list1);
+		push_back(list, cur->item);
+		cur = cur->next;
 	}
+	cur = list2->head->next;
+	while (cur)
+	{
+		push_back(list, cur->item);
+		cur = cur->next;
+	}
+	return (list);
 }
