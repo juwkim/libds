@@ -1,8 +1,5 @@
 # data_structures
 
-
-# Baekjoon Online Judge
-
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/juwkim/data_structures?color=lightblue" />
 	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/juwkim/data_structures?color=critical" />
