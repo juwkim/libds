@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   insertion_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:41 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 16:45:34 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 16:51:10 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "sorting.h"
 
-void	pop_front(t_linked_list *list)
+void	insertion_sort(t_data *list, int n)
 {
-	erase(list, 0);
-}
+	int	i;
+	int	j;
+	int	key;
 
-void	pop_back(t_linked_list *list)
-{
-	erase(list, list->size - 1);
-}
-
-void	erase(t_linked_list *list, int pos)
-{
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp);
+	i = 1;
+	while (i < n)
+	{
+		key = list[i];
+		j = i - 1;
+		while (j >= 0 && key < list[j])
+		{
+			list[j + 1] = list[j];
+			--j;
+		}
+		list[j + 1] = key;
+		++i;
+	}
 }

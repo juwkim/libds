@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/14 13:10:56 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/14 18:10:34 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,14 +22,15 @@ SRC_DIR				:=	list linked_list circular_linked_list double_linked_list
 SRC_DIR				+=	dqueue dynamic_dqueue
 SRC_DIR				+=	graph
 SRC_DIR				+=	binary_search_tree
+SRC_DIR				+=	max_heap
+SRC_DIR				+=	sorting
 
 OBJ_DIR				:=	obj
 INC_DIR				:=	includes
 
 # Define the source files
 
-SRCS				:=	$(shell find $(SRC_DIR) -type f -name '*.c')
-# SRCS				:=	$(wildcard */*.c)
+SRCS				:=	$(wildcard */*.c)
 OBJS				:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Define the variables for progress bar

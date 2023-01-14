@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   heap_sort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:41 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 17:23:34 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 17:27:43 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "sorting.h"
 
-void	pop_front(t_linked_list *list)
+void	heap_sort(t_data *list, int n)
 {
-	erase(list, 0);
-}
+	t_heap	heap;
+	int		i;
 
-void	pop_back(t_linked_list *list)
-{
-	erase(list, list->size - 1);
-}
-
-void	erase(t_linked_list *list, int pos)
-{
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp);
+	heap_init(&heap);
+	i = 0;
+	while (i < n)
+	{
+		heap_insert(&heap, list[i], -list[i]);
+		++i;
+	}
+	i = 0;
+	while (i < n)
+	{
+		list[i] = heap_delete(&heap);
+		++i;
+	}
 }

@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:41 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 15:34:24 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 18:09:48 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "max_heap.h"
 
-void	pop_front(t_linked_list *list)
+void	heap_init(t_heap *heap)
 {
-	erase(list, 0);
+	heap->size = 0;
 }
 
-void	pop_back(t_linked_list *list)
+bool	is_empty(t_heap *heap)
 {
-	erase(list, list->size - 1);
+	return (heap->size == 0);
 }
 
-void	erase(t_linked_list *list, int pos)
+bool	is_full(t_heap *heap)
 {
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp);
+	return (heap->size == HEAP_SIZE);
 }

@@ -18,40 +18,33 @@
 
 # define HEAP_SIZE 100
 
-typedef char Data;
-typedef struct
+typedef int	t_data;
+
+typedef struct s_node
 {
-	Data data;
-	int priority;
-} HNode;
+	t_data	data;
+	int		priority;
+}	t_node;
 
-typedef struct
+typedef struct s_heap
 {
-	HNode items[HEAP_SIZE + 1];
-	int num;
-} Heap;
+	int		size;
+	t_node	items[HEAP_SIZE + 1];
+}	t_heap;
 
-void InitHeap(Heap* pheap);
+// utils.c
+void	heap_init(t_heap *heap);
+bool	is_empty(t_heap *heap);
+bool	is_full(t_heap *heap);
 
-// check whether a heap is empty.
-bool IsEmpty(Heap* pheap);
+// max_heap.c
+void	heap_insert(t_heap *heap, t_data data, int priority);
+t_data	heap_delete(t_heap *heap);
 
-// Check whether a heap is full.
-bool IsFull(Heap* pheap);
+// getter.c
+int		get_parent(int idx);
+int		get_left_child(int idx);
+int		get_right_child(int idx);
+int		get_high_prioity_child(t_heap *heap, int idx);
 
-// Get a parent index for a given index.
-int GetParent(int idx);
-
-// Get a left child index for a given index.
-int GetLChild(int idx);
-
-// Get a right child index for a given index.
-int GetRChild(int idx);
-
-int GetHighPrioityChild(Heap* pheap, int idx);
-
-void Insert(Heap* pheap, Data data, int priority);
-
-Data Delete(Heap* pheap);
-
-#endif
+#endif // MAX_HEAP_H

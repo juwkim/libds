@@ -13,46 +13,32 @@
 #ifndef SORTING_H
 # define SORTING_H
 
-# include <stdio.h>
 # include <stdbool.h>
+
+# include "max_heap.h"
+# include "libft_headers/ft_math.h"
 
 # define MAX_SIZE 100
 
-typedef int Data;
+typedef int	t_data;
 
-int MIN(int a, int b);
-int MAX(int a, int b);
-void SWAP(Data* a, Data* b);
+void	selection_sort(t_data *list, int n);
 
-// SelectionSort
-void SelectionSort(Data* list, int n);
+void	bubble_sort(t_data *list, int n);
 
-// BubbleSort
-void BubbleSort(Data* list, int n);
+void	insertion_sort(t_data *list, int n);
 
-// InsertionSort
-void InsertionSort(Data* list, int n);
+void	quick_sort(t_data *list, int left, int right);
 
-// QuickSort
-int Partition(Data* list, int left, int right);
-void QuickSort(Data * list, int left, int right);
+void	merge_sort(t_data *list, int left, int right);
+void	iter_merge_sort(t_data *list, int n);
 
-// MergeSort
-void Merge(Data* list, int left, int mid, int right);
-void MergeSort(Data* list, int left, int right);
+void	counting_sort(t_data *list, int n);
 
-// IterMergeSort
-void IterMergeSort(Data* list, int n);
+void	radix_sort(t_data *list, int n);
 
-// CountingSort
-void CountingSort(Data* list, int n);
+void	shell_sort(t_data *list, int n);
 
-// RadixSort
-void Counting(Data* list, int n, int exp);
-void RadixSort(Data* list, int n);
+void	heap_sort(t_data *list, int n);
 
-// shell_sort
-void sortGapInsertion(int list[], int first, int last, int gap);
-void shell_sort(int list[], int n);
-
-#endif
+#endif // SORTING_H

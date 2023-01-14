@@ -46,5 +46,4 @@ void	preorder(t_node *root);
 void	postorder(t_node *root);
 // void	levelorder(t_node *root);
 
-
 #endif // BINARY_SEARCH_TREE_H

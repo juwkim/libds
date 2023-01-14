@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:01:44 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/09 12:22:59 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/14 18:04:38 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_median(int a, int b, int c);
 int		ft_abs(int a);
+void	ft_swap(int *a, int *b);
 
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);

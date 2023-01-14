@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   bubble_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:41 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 16:40:08 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/14 16:45:12 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#include "sorting.h"
 
-void	pop_front(t_linked_list *list)
+void	bubble_sort(t_data *list, int n)
 {
-	erase(list, 0);
-}
+	int	i;
+	int	j;
 
-void	pop_back(t_linked_list *list)
-{
-	erase(list, list->size - 1);
-}
-
-void	erase(t_linked_list *list, int pos)
-{
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp);
+	i = n - 1;
+	while (i > 0)
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (list[j] > list[j + 1])
+				ft_swap(list + j, list + j + 1);
+			++j;
+		}
+		--i;
+	}
 }
