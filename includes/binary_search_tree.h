@@ -33,6 +33,7 @@ typedef struct s_node
 t_node	*create_node(t_data key);
 size_t	get_height(t_node *root);
 size_t	count_nodes(t_node	*root);
+void	destroy(t_node *root);
 
 // tree.c
 t_node	*bst_search(t_node *root, t_data key);
@@ -43,6 +44,7 @@ t_node	*bst_remove(t_node *root, t_data key);
 void	inorder(t_node *root);
 void	preorder(t_node *root);
 void	postorder(t_node *root);
-void	levelorder(t_node *root);
+// void	levelorder(t_node *root);
+
 
 #endif // BINARY_SEARCH_TREE_H
