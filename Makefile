@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/15 06:51:20 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/15 10:09:40 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ STEP				:=	100
 
 # Define the name
 
-NAME				:=	data_structure.a
+NAME				:=	magic.a
 
 # Define the rules
 

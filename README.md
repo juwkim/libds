@@ -10,7 +10,7 @@
 
 ## Usage
 
-- To make "data_structure.a":
+- To make "magic.a":
 
 ```
 make
@@ -22,7 +22,7 @@ make
 make clean
 ```
 
-- To delete all build files and "data_structure.a":
+- To delete all build files and "magic.a":
 
 ```
 make fclean
