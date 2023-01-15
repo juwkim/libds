@@ -16,7 +16,7 @@
 # include <stddef.h>
 # include <stdbool.h>
 
-# define QUEUE_SIZE 100
+# define QUEUE_SIZE 3000
 
 typedef int	t_data;
 
