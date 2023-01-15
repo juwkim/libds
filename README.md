@@ -28,7 +28,7 @@ make clean
 make fclean
 ```
 
-- To delete all build files, "data_structure.a" and rebuild:
+- To delete all build files, "magic.a" and rebuild:
 
 ```
 make re
