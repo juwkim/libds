@@ -20,7 +20,7 @@
 
 typedef int	t_data;
 
-typedef struct s_dqueue
+typedef struct s_deque
 {
 	int		head;
 	int		tail;

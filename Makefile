@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/15 10:25:14 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/16 07:10:53 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ARFLAGS				:= 	-rcs
 # Define the directories
 
 SRC_DIR				:=	list linked_list circular_linked_list double_linked_list
-SRC_DIR				+=	dqueue dynamic_dqueue
+SRC_DIR				+=	deque dynamic_deque
 SRC_DIR				+=	graph
 SRC_DIR				+=	binary_search_tree
 SRC_DIR				+=	max_heap

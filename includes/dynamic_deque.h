@@ -25,7 +25,7 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_dqueue
+typedef struct s_deque
 {
 	size_t	size;
 	t_node	*head;

@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 
-# include "dqueue.h"
+# include "deque.h"
 # include "libft_headers/ft_printf.h"
 
 typedef struct s_node

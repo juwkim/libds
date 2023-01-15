@@ -6,11 +6,11 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:01:26 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/16 07:10:53 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynamic_dqueue.h"
+#include "dynamic_deque.h"
 
 void	pop_front(t_deque *dq)
 {

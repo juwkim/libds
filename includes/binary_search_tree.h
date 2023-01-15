@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# include "dqueue.h"
+# include "deque.h"
 # include "libft_headers/ft_math.h"
 # include "libft_headers/ft_printf.h"
 

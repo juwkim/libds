@@ -6,11 +6,11 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:35:58 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/16 07:10:53 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dqueue.h"
+#include "deque.h"
 
 void	dq_init(t_deque *dq)
 {
