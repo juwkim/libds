@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:09:59 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 14:55:59 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	postorder(t_node *root)
 /*
 void	levelorder(t_node *root)
 {
-	t_dqueue	dq;
+	t_deque	dq;
 
 	dq_init(&dq);
 	push_back(&dq, root);

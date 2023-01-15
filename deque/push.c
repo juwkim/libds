@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 11:50:48 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 11:51:12 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 11:50:11 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dqueue.h"
 
-void	pop_front(t_dqueue *dq)
+void	push_front(t_deque *dq, t_data item)
 {
-	dq->head = (dq->head + 1) % QUEUE_SIZE;
+	dq->head = (dq->head - 1) % QUEUE_SIZE;
+	dq->items[dq->head] = item;
 }
 
-void	pop_back(t_dqueue *dq)
+void	push_back(t_deque *dq, t_data item)
 {
-	dq->tail = (dq->tail - 1) % QUEUE_SIZE;
+	dq->items[dq->tail] = item;
+	dq->tail = (dq->tail + 1) % QUEUE_SIZE;
 }

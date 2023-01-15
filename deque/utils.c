@@ -5,32 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 10:47:41 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 12:32:17 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 11:35:58 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dynamic_dqueue.h"
+#include "dqueue.h"
 
-void	dq_init(t_dqueue *dq)
+void	dq_init(t_deque *dq)
 {
-	dq->size = 0;
-	dq->head = NULL;
-	dq->tail = NULL;
+	dq->head = 0;
+	dq->tail = 0;
 }
 
-void	destroy(t_dqueue *dq)
+bool	is_empty(t_deque *dq)
 {
-	while (dq->size)
-		pop_back(dq);
+	return (size(dq) == 0);
 }
 
-bool	is_empty(t_dqueue *dq)
+bool	is_full(t_deque *dq)
 {
-	return (dq->head == NULL);
+	return (size(dq) == QUEUE_SIZE - 1);
 }
 
-size_t	size(t_dqueue *dq)
+size_t	size(t_deque *dq)
 {
-	return (dq->size);
+	return ((dq->tail - dq->head) % QUEUE_SIZE);
 }

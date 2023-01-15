@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:14:04 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 12:47:33 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static bool	*get_visited_array(size_t size)
 
 void	bfs(t_graph *graph)
 {
-	t_dqueue	dq;
+	t_deque	dq;
 	t_node		*cur;
 	int			vertex;
 	bool *const	visited = get_visited_array(graph->size);
@@ -55,7 +55,7 @@ void	bfs(t_graph *graph)
 
 void	dfs(t_graph *graph)
 {
-	t_dqueue	dq;
+	t_deque	dq;
 	t_node		*cur;
 	int			vertex;
 	bool *const	visited = get_visited_array(graph->size);

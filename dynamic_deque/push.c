@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:53:08 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 11:17:18 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_node	*create_node(t_data item)
 	return (new_node);
 }
 
-void	push_front(t_dqueue *dq, t_data item)
+void	push_front(t_deque *dq, t_data item)
 {
 	t_node *const	new_node = create_node(item);
 
@@ -42,7 +42,7 @@ void	push_front(t_dqueue *dq, t_data item)
 	++dq->size;
 }
 
-void	push_back(t_dqueue *dq, t_data item)
+void	push_back(t_deque *dq, t_data item)
 {
 	t_node *const	new_node = create_node(item);
 

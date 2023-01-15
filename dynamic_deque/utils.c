@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 11:50:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 11:50:37 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 10:47:41 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/15 21:04:51 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "dqueue.h"
+#include "dynamic_dqueue.h"
 
-void	push_front(t_dqueue *dq, t_data item)
+void	dq_init(t_deque *dq)
 {
-	dq->head = (dq->head - 1) % QUEUE_SIZE;
-	dq->items[dq->head] = item;
+	dq->size = 0;
+	dq->head = NULL;
+	dq->tail = NULL;
 }
 
-void	push_back(t_dqueue *dq, t_data item)
+void	destroy(t_deque *dq)
 {
-	dq->items[dq->tail] = item;
-	dq->tail = (dq->tail + 1) % QUEUE_SIZE;
+	while (dq->size)
+		pop_back(dq);
+}
+
+bool	is_empty(t_deque *dq)
+{
+	return (dq->head == NULL);
+}
+
+size_t	size(t_deque *dq)
+{
+	return (dq->size);
 }
