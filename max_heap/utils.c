@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 15:34:24 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:48 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/16 14:45:12 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	heap_init(t_heap *heap)
 	heap->size = 0;
 }
 
-bool	is_empty(t_heap *heap)
+bool	heap_is_empty(t_heap *heap)
 {
 	return (heap->size == 0);
 }
 
-bool	is_full(t_heap *heap)
+bool	heap_is_full(t_heap *heap)
 {
 	return (heap->size == HEAP_SIZE);
 }

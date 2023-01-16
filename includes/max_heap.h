@@ -16,35 +16,35 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define HEAP_SIZE 100
+# define HEAP_SIZE 3000
 
-typedef int	t_data;
+typedef int	t_heap_data;
 
-typedef struct s_node
+typedef struct s_heap_node
 {
-	t_data	data;
-	int		priority;
-}	t_node;
+	int			priority;
+	t_heap_data	data;
+}	t_heap_node;
 
 typedef struct s_heap
 {
-	int		size;
-	t_node	items[HEAP_SIZE + 1];
+	int			size;
+	t_heap_node	items[HEAP_SIZE + 1];
 }	t_heap;
 
 // utils.c
-void	heap_init(t_heap *heap);
-bool	is_empty(t_heap *heap);
-bool	is_full(t_heap *heap);
+void		heap_init(t_heap *heap);
+bool		heap_is_empty(t_heap *heap);
+bool		heap_is_full(t_heap *heap);
 
 // max_heap.c
-void	heap_insert(t_heap *heap, t_data data, int priority);
-t_data	heap_delete(t_heap *heap);
+void		heap_insert(t_heap *heap, t_heap_data data, int priority);
+t_heap_data	heap_delete(t_heap *heap);
 
 // getter.c
-int		get_parent(int idx);
-int		get_left_child(int idx);
-int		get_right_child(int idx);
-int		get_high_prioity_child(t_heap *heap, int idx);
+int			heap_get_parent(int idx);
+int			heap_get_left_child(int idx);
+int			heap_get_right_child(int idx);
+int			heap_get_higher_prioity_child(t_heap *heap, int idx);
 
 #endif // MAX_HEAP_H
