@@ -24,26 +24,25 @@ typedef struct s_deque
 {
 	int		head;
 	int		tail;
-	size_t	size;
 	t_data	items[QUEUE_SIZE];
 }	t_deque;
 
 // utils.c
 void	dq_init(t_deque *dq);
-bool	is_empty(t_deque *dq);
-bool	is_full(t_deque *dq);
-size_t	size(t_deque *dq);
+bool	dq_is_empty(t_deque *dq);
+bool	dq_is_full(t_deque *dq);
+size_t	dq_size(t_deque *dq);
 
 // push.c
-void	push_front(t_deque *dq, t_data item);
-void	push_back(t_deque *dq, t_data item);
+void	dq_push_front(t_deque *dq, t_data item);
+void	dq_push_back(t_deque *dq, t_data item);
 
 // pop.c
-void	pop_front(t_deque *dq);
-void	pop_back(t_deque *dq);
+void	dq_pop_front(t_deque *dq);
+void	dq_pop_back(t_deque *dq);
 
 // getter.c
-t_data	front(t_deque *dq);
-t_data	back(t_deque *dq);
+t_data	dq_front(t_deque *dq);
+t_data	dq_back(t_deque *dq);
 
 #endif // DEQUE_H

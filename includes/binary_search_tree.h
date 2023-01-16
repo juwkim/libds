@@ -22,28 +22,28 @@
 
 typedef int	t_data;
 
-typedef struct s_node
+typedef struct s_bst_node
 {
-	t_data			key;
-	struct s_node	*left;
-	struct s_node	*right;
-}	t_node;
+	t_data				key;
+	struct s_bst_node	*left;
+	struct s_bst_node	*right;
+}	t_bst_node;
 
 // utils.c
-t_node	*create_node(t_data key);
-size_t	get_height(t_node *root);
-size_t	count_nodes(t_node	*root);
-void	destroy(t_node *root);
+t_bst_node	*bst_create_node(t_data key);
+size_t		bst_get_height(t_bst_node *root);
+size_t		bst_count_nodes(t_bst_node *root);
+void		bst_destroy(t_bst_node *root);
 
 // tree.c
-t_node	*bst_search(t_node *root, t_data key);
-t_node	*bst_insert(t_node *root, t_data key);
-t_node	*bst_remove(t_node *root, t_data key);
+t_bst_node	*bst_search(t_bst_node *root, t_data key);
+t_bst_node	*bst_insert(t_bst_node *root, t_data key);
+t_bst_node	*bst_remove(t_bst_node *root, t_data key);
 
 // traversal.c
-void	inorder(t_node *root);
-void	preorder(t_node *root);
-void	postorder(t_node *root);
-// void	levelorder(t_node *root);
+void		bst_inorder(t_bst_node *root);
+void		bst_preorder(t_bst_node *root);
+void		bst_postorder(t_bst_node *root);
+void		bst_levelorder(t_bst_node *root);
 
 #endif // BINARY_SEARCH_TREE_H

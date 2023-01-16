@@ -6,15 +6,15 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:20:34 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 15:03:10 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/16 11:00:46 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "binary_search_tree.h"
 
-t_node	*create_node(t_data key)
+t_bst_node	*bst_create_node(t_data key)
 {
-	t_node *const	new_node = (t_node *) malloc(sizeof(t_node));
+	t_bst_node *const	new_node = (t_bst_node *) malloc(sizeof(t_bst_node));
 
 	if (new_node == NULL)
 		exit(EXIT_FAILURE);
@@ -24,16 +24,16 @@ t_node	*create_node(t_data key)
 	return (new_node);
 }
 
-void	destroy(t_node *root)
+void	bst_destroy(t_bst_node *root)
 {
 	if (root == NULL)
 		return ;
-	destroy(root->left);
-	destroy(root->right);
+	bst_destroy(root->left);
+	bst_destroy(root->right);
 	free(root);
 }
 
-size_t	get_height(t_node *root)
+size_t	bst_get_height(t_bst_node *root)
 {
 	size_t	left_height;
 	size_t	right_height;
@@ -41,13 +41,13 @@ size_t	get_height(t_node *root)
 	left_height = 0;
 	right_height = 0;
 	if (root->left != NULL)
-		left_height = get_height(root->left);
+		left_height = bst_get_height(root->left);
 	if (root->right != NULL)
-		right_height = get_height(root->right);
+		right_height = bst_get_height(root->right);
 	return (ft_max(left_height, right_height) + 1);
 }
 
-size_t	count_nodes(t_node	*root)
+size_t	bst_count_nodes(t_bst_node	*root)
 {
 	size_t	left_nodes;
 	size_t	right_nodes;
@@ -55,8 +55,8 @@ size_t	count_nodes(t_node	*root)
 	left_nodes = 0;
 	right_nodes = 0;
 	if (root->left != NULL)
-		left_nodes = count_nodes(root->left);
+		left_nodes = bst_count_nodes(root->left);
 	if (root->right != NULL)
-		right_nodes = count_nodes(root->right);
+		right_nodes = bst_count_nodes(root->right);
 	return (left_nodes + right_nodes + 1);
 }
