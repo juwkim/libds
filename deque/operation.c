@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:26:55 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/16 14:40:32 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/17 15:02:35 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,19 @@ void	dq_set_rank(t_deque *a)
 		a->nodes[heap_delete(&heap)].rank = rank;
 		--rank;
 	}
+}
+
+bool	dq_nsorted(t_deque *dq, size_t n, bool (*key)(int a, int b))
+{
+	int	cur;
+	int	next;
+
+	cur = dq->head;
+	next = (cur + 1) % QUEUE_SIZE;
+	while (--n && key(dq->nodes[cur].item, dq->nodes[next].item) == true)
+	{
+		cur = next;
+		next = (next + 1) % QUEUE_SIZE;
+	}
+	return (n == 0);
 }

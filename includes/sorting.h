@@ -18,27 +18,29 @@
 # include "max_heap.h"
 # include "libft_headers/ft_math.h"
 
-# define MAX_SIZE 100
+# define MAX_SIZE 10000
 
 typedef int	t_data;
 
+bool	less(t_data a, t_data b);
+bool	greater(t_data a, t_data b);
+
+// O(N ** 2)
 void	selection_sort(t_data *list, int n);
-
 void	bubble_sort(t_data *list, int n);
-
 void	insertion_sort(t_data *list, int n);
 
-void	quick_sort(t_data *list, int left, int right);
-
-void	merge_sort(t_data *list, int left, int right);
-void	iter_merge_sort(t_data *list, int n);
-
-void	counting_sort(t_data *list, int n);
-
-void	radix_sort(t_data *list, int n);
-
+// O(N ** 1.5)
 void	shell_sort(t_data *list, int n);
 
+// O(NlogN)
+void	quick_sort(t_data *list, int left, int right);
+void	merge_sort(t_data *list, int left, int right);
+void	iter_merge_sort(t_data *list, int n);
 void	heap_sort(t_data *list, int n);
+
+// O(N)
+void	counting_sort(t_data *list, int n);
+void	radix_sort(t_data *list, int n);
 
 #endif // SORTING_H

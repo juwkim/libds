@@ -25,8 +25,8 @@ typedef int	t_dq_data;
 
 typedef struct s_dq_node
 {
-	int			rank;
 	t_dq_data	item;
+	int			rank;
 }	t_dq_node;
 
 typedef struct s_deque
@@ -43,8 +43,8 @@ bool		dq_is_full(t_deque *dq);
 size_t		dq_size(t_deque *dq);
 
 // push.c
-void		dq_push_front(t_deque *dq, t_dq_data node);
-void		dq_push_back(t_deque *dq, t_dq_data node);
+void		dq_push_front(t_deque *dq, t_dq_node node);
+void		dq_push_back(t_deque *dq, t_dq_node node);
 
 // pop.c
 void		dq_pop_front(t_deque *dq);
@@ -57,5 +57,6 @@ t_dq_node	dq_back(t_deque *dq);
 // operation.c
 bool		dq_is_duplication(const t_deque *dq);
 void		dq_set_rank(t_deque *a);
+bool		dq_nsorted(t_deque *dq, size_t n, bool (*key)(int a, int b));
 
 #endif // DEQUE_H

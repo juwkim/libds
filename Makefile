@@ -6,7 +6,7 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/16 15:02:38 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/17 15:16:37 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ INC_DIR				:=	includes
 
 # Define the source files
 
-SRCS				:=	$(wildcard */*.c)
+SRCS				:=	$(filter-out $(wildcard graph/*.c), $(wildcard */*.c))
 OBJS				:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Define the variables for progress bar

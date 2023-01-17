@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:02:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 17:23:03 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/17 16:06:47 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	merge_sort(t_data *list, int left, int right)
 	if (left >= right)
 		return ;
 	mid = (left + right) / 2;
-	merge_sort(list, left, mid);
+	merge_sort(list, left, mid - 1);
 	merge_sort(list, mid + 1, right);
 	merge(list, left, mid, right);
 }
