@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:35:58 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/16 14:27:09 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:53:42 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,8 @@ bool	dq_is_full(t_deque *dq)
 
 size_t	dq_size(t_deque *dq)
 {
-	return ((dq->tail - dq->head) % QUEUE_SIZE);
+	if (dq->tail >= dq->head)
+		return (dq->tail - dq->head);
+	else
+		return (dq->tail - dq->head + QUEUE_SIZE);
 }

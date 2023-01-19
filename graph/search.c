@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:14:04 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/16 14:44:18 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/18 01:40:42 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	bfs(t_graph *graph)
 	visited[0] = true;
 	while (dq_is_empty(&dq) == false)
 	{
-		vertex = dq_front(&dq).item;
+		vertex = dq_front(&dq);
 		dq_pop_front(&dq);
 		ft_printf("%06d ", vertex);
 		cur = graph->heads[vertex]->next;
@@ -65,7 +65,7 @@ void	dfs(t_graph *graph)
 	visited[0] = true;
 	while (dq_is_empty(&dq) == false)
 	{
-		vertex = dq_front(&dq).item;
+		vertex = dq_front(&dq);
 		dq_pop_front(&dq);
 		ft_printf("%06d ", vertex);
 		cur = graph->heads[vertex]->next;

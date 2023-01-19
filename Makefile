@@ -6,14 +6,14 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/01/17 15:16:37 by juwkim           ###   ########.fr        #
+#    Updated: 2023/01/18 03:06:34 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Define the compiler and flags
 
 CC					:=	cc
-CFLAGS				:=	-Wall -Wextra -Werror -march=native -O2 -pipe -fsanitize=leak -fsanitize=address
+CFLAGS				:=	-Wall -Wextra -Werror -march=native -O2 -pipe
 ARFLAGS				:= 	-rcs
 
 # Define the directories
@@ -31,7 +31,7 @@ INC_DIR				:=	includes
 
 # Define the source files
 
-SRCS				:=	$(filter-out $(wildcard graph/*.c), $(wildcard */*.c))
+SRCS				:=	$(wildcard */*.c)
 OBJS				:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Define the variables for progress bar

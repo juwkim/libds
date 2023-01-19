@@ -6,23 +6,23 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 05:41:27 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 05:49:56 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:47:43 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void	push_front(t_list *list, t_data item)
+void	list_push_front(t_list *list, t_list_data item)
 {
-	insert(list, 0, item);
+	list_insert(list, 0, item);
 }
 
-void	push_back(t_list *list, t_data item)
+void	list_push_back(t_list *list, t_list_data item)
 {
 	list->items[list->size++] = item;
 }
 
-void	insert(t_list *list, int pos, t_data item)
+void	list_insert(t_list *list, int pos, t_list_data item)
 {
 	int	i;
 

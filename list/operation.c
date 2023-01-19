@@ -6,26 +6,26 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 08:25:47 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/18 03:37:59 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void	print(t_list *list)
+void	list_print(t_list *list)
 {
 	size_t	cur;
 
 	cur = 0;
 	while (cur < list->size)
-		ft_printf("%06d", list->items[cur++]);
+		ft_printf("%s\n", list->items[cur++]);
 }
 
-void	reverse(t_list *list)
+void	list_reverse(t_list *list)
 {
 	size_t		left;
 	size_t		right;
-	t_data		temp;
+	t_list_data	temp;
 
 	left = 0;
 	right = list->size - 1;
@@ -39,19 +39,19 @@ void	reverse(t_list *list)
 	}
 }
 
-t_list	*concatenate(t_list *list1, t_list *list2)
+t_list	*list_concatenate(t_list *list1, t_list *list2)
 {
 	t_list *const	list = (t_list *) malloc(sizeof(t_list));
 	size_t			cur;
 
 	if (list == NULL)
 		exit(EXIT_FAILURE);
-	init(list);
+	list_init(list);
 	cur = 0;
 	while (cur < list1->size)
-		push_back(list, list1->items[cur++]);
+		list_push_back(list, list1->items[cur++]);
 	cur = 0;
 	while (cur < list2->size)
-		push_back(list, list2->items[cur++]);
+		list_push_back(list, list2->items[cur++]);
 	return (list);
 }

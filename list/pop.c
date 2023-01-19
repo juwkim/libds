@@ -6,23 +6,23 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 05:51:16 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 06:01:26 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/01/18 02:41:09 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void	pop_front(t_list *list)
+void	list_pop_front(t_list *list)
 {
-	erase(list, 0);
+	list_erase(list, 0);
 }
 
-void	pop_back(t_list *list)
+void	list_pop_back(t_list *list)
 {
-	erase(list, list->size - 1);
+	list_erase(list, list->size - 1);
 }
 
-void	erase(t_list *list, int pos)
+void	list_erase(t_list *list, int pos)
 {
 	size_t	i;
 

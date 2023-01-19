@@ -18,40 +18,40 @@
 
 # include "libft_headers/ft_printf.h"
 
-# define LIST_SIZE 100
+# define LIST_SIZE 10000
 
-typedef int	t_data;
+typedef char *	t_list_data;
 
 typedef struct s_list
 {
-	size_t	size;
-	t_data	items[LIST_SIZE];
+	size_t		size;
+	t_list_data	items[LIST_SIZE];
 }	t_list;
 
 // usils.c
-void	init(t_list *list);
-bool	is_empty(t_list *list);
-bool	is_full(t_list *list);
-size_t	size(t_list *list);
+void		list_init(t_list *list);
+bool		list_is_empty(t_list *list);
+bool		list_is_full(t_list *list);
+size_t		list_size(t_list *list);
 
 // push.c
-void	push_front(t_list *list, t_data item);
-void	push_back(t_list *list, t_data item);
-void	insert(t_list *list, int pos, t_data item);
+void		list_push_front(t_list *list, t_list_data item);
+void		list_push_back(t_list *list, t_list_data item);
+void		list_insert(t_list *list, int pos, t_list_data item);
 
 // pop.c
-void	pop_front(t_list *list);
-void	pop_back(t_list *list);
-void	erase(t_list *list, int pos);
+void		list_pop_front(t_list *list);
+void		list_pop_back(t_list *list);
+void		list_erase(t_list *list, int pos);
 
 // getter.c
-t_data	front(t_list *list);
-t_data	back(t_list *list);
-t_data	get_item(t_list *list, int pos);
+t_list_data	list_front(t_list *list);
+t_list_data	list_back(t_list *list);
+t_list_data	list_get_item(t_list *list, int pos);
 
 // operation.c
-void	print(t_list *list);
-void	reverse(t_list *list);
-t_list	*concatenate(t_list *list1, t_list *list2);
+void		list_print(t_list *list);
+void		list_reverse(t_list *list);
+t_list		*list_concatenate(t_list *list1, t_list *list2);
 
 #endif // LIST_H
