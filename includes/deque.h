@@ -47,6 +47,8 @@ void		dq_pop_back(t_deque *dq);
 // getter.c
 t_dq_data	dq_front(t_deque *dq);
 t_dq_data	dq_back(t_deque *dq);
+t_dq_data	dq_get_front_item(t_deque *dq, int pos);
+t_dq_data	dq_get_back_item(t_deque *dq, int pos);
 
 // operation.c
 void		dq_print(t_deque *dq);
