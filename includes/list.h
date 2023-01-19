@@ -18,7 +18,7 @@
 
 # include "libft_headers/ft_printf.h"
 
-# define LIST_SIZE 10000
+# define LIST_SIZE 50000
 
 typedef char *	t_list_data;
 
