@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define HEAP_SIZE 3000
+# define HEAP_SIZE 100000
 
 typedef int	t_heap_data;
 

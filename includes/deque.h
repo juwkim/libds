@@ -19,7 +19,7 @@
 # include "max_heap.h"
 # include "binary_search_tree.h"
 
-# define QUEUE_SIZE 3000
+# define QUEUE_SIZE 100000
 
 typedef int	t_dq_data;
 

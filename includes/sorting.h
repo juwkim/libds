@@ -18,7 +18,7 @@
 # include "max_heap.h"
 # include "libft_headers/ft_math.h"
 
-# define MAX_SIZE 10000
+# define MAX_SIZE 50000
 
 typedef int	t_data;
 
