@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# include "libft_headers/ft_printf.h"
+# include "libft_header/ft_printf.h"
 
 typedef int	t_data;
 

@@ -16,7 +16,7 @@
 # include <stdbool.h>
 
 # include "max_heap.h"
-# include "libft_headers/ft_math.h"
+# include "libft_header/ft_math.h"
 
 # define MAX_SIZE 100000
 
