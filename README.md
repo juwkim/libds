@@ -1,4 +1,4 @@
-# algorithms and data structures
+# data structures
 
 <p align="center">
 	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/juwkim/data_structures?color=lightblue" />
