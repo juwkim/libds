@@ -42,7 +42,7 @@ STEP				:=	100
 
 # Define the name
 
-NAME				:=	magic.a
+NAME				:=	libdatastructure.a
 
 # Define the rules
 
