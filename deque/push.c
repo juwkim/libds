@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:50:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/18 01:57:42 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/03 20:02:24 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	dq_push_front(t_deque *dq, t_dq_data item)
 
 void	dq_push_back(t_deque *dq, t_dq_data item)
 {
+	if (item == NULL)
+		return ;
 	dq->items[dq->tail] = item;
 	dq->tail = (dq->tail + 1) % QUEUE_SIZE;
 }

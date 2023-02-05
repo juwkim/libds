@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:35:58 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/18 01:53:42 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/03 20:05:31 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ void	dq_init(t_deque *dq)
 {
 	dq->head = 0;
 	dq->tail = 0;
+}
+
+void	dq_destroy(t_deque *dq)
+{
+	int	cur;
+
+	cur = dq->head;
+	while (cur != dq->tail)
+	{
+		free(dq->items[cur]);
+		cur = (cur + 1) % QUEUE_SIZE;
+	}
 }
 
 bool	dq_is_empty(t_deque *dq)

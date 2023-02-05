@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   ft_memory.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/31 03:56:02 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/09 10:17:32 by juwkim            #+#    #+#             */
+/*   Updated: 2023/02/03 20:51:11 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#ifndef FT_MEMORY_H
+# define FT_MEMORY_H
 
-void	list_pop_front(t_linked_list *list)
-{
-	list_erase(list, 0);
-}
+# include <stdlib.h>
 
-void	list_pop_back(t_linked_list *list)
-{
-	list_erase(list, list->size - 1);
-}
+void	ft_memset(void *ptr, unsigned char c, int n);
+void	ft_bzero(void *ptr, int n);
+void	*ft_calloc(int nmemb, int size);
 
-void	list_erase(t_linked_list *list, int pos)
-{
-	t_node	*cur;
-	t_node	*temp;
+char	*ft_memchr(char *s, char c, int n);
+void	*ft_memcpy(void *dst, void *src, size_t n);
+char	*ft_memmove(char *dst, char *src, int len);
+int		ft_memcmp(const char *s1, const char *s2, int n);
 
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp->item);
-	free(temp);
-}
+#endif

@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/31 03:56:02 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/13 01:10:52 by juwkim            #+#    #+#             */
+/*   Updated: 2023/01/27 22:24:40 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "linked_list.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	list_pop_front(t_linked_list *list)
-{
-	list_erase(list, 0);
-}
+# include "ft_error.h"
+# include "ft_is.h"
+# include "ft_math.h"
+# include "ft_memory.h"
+# include "ft_printf.h"
+# include "ft_string.h"
 
-void	list_pop_back(t_linked_list *list)
-{
-	list_erase(list, list->size - 1);
-}
-
-void	list_erase(t_linked_list *list, int pos)
-{
-	t_node	*cur;
-	t_node	*temp;
-
-	cur = list->head;
-	while (pos--)
-		cur = cur->next;
-	temp = cur->next;
-	cur->next = cur->next->next;
-	--list->size;
-	free(temp->item);
-	free(temp);
-}
+#endif

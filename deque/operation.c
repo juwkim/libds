@@ -6,102 +6,62 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:26:55 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/18 19:05:27 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/04 05:47:43 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "deque.h"
 
+static int	get_total_len(t_deque *dq);
+
 void	dq_print(t_deque *dq)
 {	
 	int	cur;
 
-	ft_printf("size [%d]:", dq_size(dq));
+	printf("size [%ld]\n", dq_size(dq));
 	cur = dq->head;
 	while (cur != dq->tail)
 	{
-		ft_printf(" %d", dq->items[cur]);
+		printf("%s\n", (char *) dq->items[cur]);
 		cur = (cur + 1) % QUEUE_SIZE;
 	}
-	ft_printf("\n");
 }
 
-bool	dq_is_duplication(const t_deque *dq)
+char	*dq_strjoin(t_deque *dq)
 {
-	t_bst_node	*root;
-	size_t		nodes;
 	int			cur;
+	int			idx;
+	int			str_len;
+	const int	total_len = get_total_len(dq);
+	char *const	str = malloc(sizeof(char) * (total_len + 1));
 
-	root = NULL;
+	if (str == NULL)
+		return (NULL);
 	cur = dq->head;
-	while ((dq->tail - cur) % QUEUE_SIZE != 0)
-		root = bst_insert(root, dq->items[cur++]);
-	nodes = bst_count_nodes(root);
-	bst_destroy(root);
-	return (nodes != dq_size((t_deque *) dq));
+	idx = 0;
+	while (cur != dq->tail)
+	{
+		str_len = ft_strlen(dq->items[cur]);
+		ft_memcpy(str + idx, dq->items[cur], str_len);
+		idx += str_len;
+		cur = (cur + 1) % QUEUE_SIZE;
+	}
+	str[total_len] = '\0';
+	dq_destroy(dq);
+	return (str);
 }
 
-void	dq_set_rank(t_deque *a)
+static int	get_total_len(t_deque *dq)
 {
-	t_heap	heap;
 	int		cur;
-	int		rank;
-
-	heap_init(&heap);
-	cur = a->head;
-	while ((a->tail - cur) % QUEUE_SIZE != 0)
-	{
-		heap_insert(&heap, cur, a->items[cur]);
-		cur = (cur + 1) % QUEUE_SIZE;
-	}
-	rank = dq_size(a);
-	while (rank)
-	{
-		a->items[heap_delete(&heap)] = rank;
-		--rank;
-	}
-}
-
-bool	dq_nsorted(t_deque *dq, size_t n, bool (*key)(int a, int b))
-{
-	int	cur;
-	int	next;
+	int		total_len;
 
 	cur = dq->head;
-	next = (cur + 1) % QUEUE_SIZE;
-	while (--n && key(dq->items[cur], dq->items[next]) == true)
+	total_len = 0;
+	while (cur != dq->tail)
 	{
-		cur = next;
-		next = (next + 1) % QUEUE_SIZE;
-	}
-	return (n == 0);
-}
-
-t_dq_data	*get_rank_arr(t_deque *dq, size_t n)
-{
-	size_t		i;
-	int			cur;
-	t_heap		heap;
-	t_dq_data	*arr;
-	int			rank;
-
-	i = 0;
-	cur = dq->head;
-	heap_init(&heap);
-	while (i < n)
-	{
-		heap_insert(&heap, i, dq->items[cur]);
+		total_len += ft_strlen(dq->items[cur]);
 		cur = (cur + 1) % QUEUE_SIZE;
-		++i;
 	}
-	arr = malloc(dq_size(dq) * sizeof(t_dq_data));
-	if (arr == NULL)
-		exit(EXIT_FAILURE);
-	rank = n;
-	while (rank)
-	{
-		arr[heap_delete(&heap)] = rank;
-		--rank;
-	}
-	return (arr);
+	return (total_len);
 }
