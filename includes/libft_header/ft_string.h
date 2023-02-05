@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 00:47:18 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/03 20:32:43 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/03 23:56:11 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**ft_split(char const *s, char c);
 void	ft_free_array(char **split);
 
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strnewlinejoin(char *s1, char *s2);
 
 char	*ft_strdup(const char *s);
 char	*ft_strndup(const char *s, size_t n);
@@ -54,4 +53,4 @@ int		ft_strlen(const char *s);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
-#endif //FT_STRING_H
+#endif
