@@ -6,27 +6,29 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/03 04:42:14 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/07 23:40:23 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "linked_list.h"
 
-void	list_print(t_linked_list *list)
+static int	get_total_len(t_list *list);
+
+void	list_print(t_list *list)
 {
 	t_node	*cur;
 
 	cur = list->head->next;
-	printf(YELLOW"%s "DEF_COLOR, cur->item);
+	printf(YELLOW"%s "DEF_COLOR, (char *) cur->item);
 	cur = cur->next;
 	while (cur != NULL)
 	{
-		printf(GREEN"%s "DEF_COLOR, cur->item);
+		printf(GREEN"%s "DEF_COLOR, (char *) cur->item);
 		cur = cur->next;
 	}
 }
 
-void	list_reverse(t_linked_list *list)
+void	list_reverse(t_list *list)
 {
 	t_node	*prev;
 	t_node	*cur;
@@ -44,11 +46,10 @@ void	list_reverse(t_linked_list *list)
 	list->head->next = cur;
 }
 
-t_linked_list	*list_concatenate(t_linked_list *list1, t_linked_list *list2)
+t_list	*list_concatenate(t_list *list1, t_list *list2)
 {
-	t_linked_list *const	list = \
-							(t_linked_list *) malloc(sizeof(t_linked_list));
-	t_node					*cur;
+	t_list *const	list = (t_list *) malloc(sizeof(t_list));
+	t_node			*cur;
 
 	if (list == NULL)
 		exit(EXIT_FAILURE);
@@ -66,4 +67,43 @@ t_linked_list	*list_concatenate(t_linked_list *list1, t_linked_list *list2)
 		cur = cur->next;
 	}
 	return (list);
+}
+
+char	*list_strjoin(t_list *list)
+{
+	t_node		*cur;
+	int			idx;
+	int			str_len;
+	const int	total_len = get_total_len(list);
+	char *const	str = malloc(sizeof(char) * (total_len + 1));
+
+	if (str == NULL)
+		return (NULL);
+	cur = list->head->next;
+	idx = 0;
+	while (cur != NULL)
+	{
+		str_len = ft_strlen(cur->item);
+		ft_memcpy(str + idx, cur->item, str_len);
+		idx += str_len;
+		cur = cur->next;
+	}
+	str[total_len] = '\0';
+	list_destroy(list, free);
+	return (str);
+}
+
+static int	get_total_len(t_list *list)
+{
+	t_node	*cur;
+	int		total_len;
+
+	total_len = 0;
+	cur = list->head->next;
+	while (cur != NULL)
+	{
+		total_len += ft_strlen(cur->item);
+		cur = cur->next;
+	}
+	return (total_len);
 }

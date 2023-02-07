@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 09:45:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/07 05:25:51 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 05:36:45 by juwkim            #+#    #+#             */
+/*   Updated: 2023/02/07 06:05:56 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_linked_list.h"
+#include "array.h"
 
-void	pop_front(t_double_linked_list *list)
+t_array_data	array_front(t_array *array)
 {
-	erase(list, 0);
+	return (array_get_item(array, 0));
 }
 
-void	pop_back(t_double_linked_list *list)
+t_array_data	array_back(t_array *array)
 {
-	erase(list, -1);
+	return (array_get_item(array, array->size - 1));
 }
 
-void	erase(t_double_linked_list *list, int pos)
+t_array_data	array_get_item(t_array *array, int pos)
 {
-	t_node *const	cur = get_iterator(list, pos);
-	t_node *const	temp = cur->next;
-
-	cur->next = temp->next;
-	temp->next->prev = cur;
-	--list->size;
-	free(temp);
+	return (array->items[pos]);
 }

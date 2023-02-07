@@ -6,19 +6,23 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/02/06 00:03:15 by juwkim           ###   ########.fr        #
+#    Updated: 2023/02/07 06:04:16 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Define the compiler and flags
 
 CC					:=	cc
-CFLAGS				:=	-Wall -Wextra -Werror -march=native -O2 -pipe
+CFLAGS				:=	-Wall -Wextra -Werror -march=native -O2 -pipe -fsanitize=address
 ARFLAGS				:= 	-rcs
+
+ifeq ($(shell uname -s), Linux)
+	CFLAGS += -Wno-unused-result -fsanitize=leak
+endif
 
 # Define the directories
 
-SRC_DIR				:=	list linked_list circular_linked_list double_linked_list
+SRC_DIR				:=	array linked_list circular_linked_list double_linked_list
 SRC_DIR				+=	deque dynamic_deque
 SRC_DIR				+=	graph
 SRC_DIR				+=	binary_search_tree

@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
+# include "libft_header/libft.h"
+
 # define DEF_COLOR	"\033[0;39m"
 # define GRAY		"\033[1;90m"
 # define RED		"\033[1;91m"
@@ -27,7 +29,7 @@
 # define CYAN		"\033[1;96m"
 # define WHITE		"\033[1;97m"
 
-typedef char *	t_data;
+typedef void *	t_data;
 
 typedef struct s_node
 {
@@ -39,32 +41,34 @@ typedef struct s_linked_list
 {
 	size_t	size;
 	t_node	*head;
-}	t_linked_list;
+}	t_list;
 
 // usils.c
-void			list_init(t_linked_list *list);
-void			list_destroy(t_linked_list *list);
-bool			list_is_empty(t_linked_list *list);
-size_t			list_size(t_linked_list *list);
+void			list_init(t_list *list);
+void			list_destroy(t_list *list, void (*del)(void *));
+bool			list_is_empty(t_list *list);
+size_t			list_size(t_list *list);
 
 // push.c
-void			list_push_front(t_linked_list *list, t_data item);
-void			list_push_back(t_linked_list *list, t_data item);
-void			list_insert(t_linked_list *list, int pos, t_data item);
+void			list_push_front(t_list *list, t_data item);
+void			list_push_back(t_list *list, t_data item);
+void			list_insert(t_list *list, int pos, t_data item);
+t_node			*list_create_node(t_data item);
 
 // pop.c
-void			list_pop_front(t_linked_list *list);
-void			list_pop_back(t_linked_list *list);
-void			list_erase(t_linked_list *list, int pos);
+void			list_pop_front(t_list *list, void (*del)(void *));
+void			list_pop_back(t_list *list, void (*del)(void *));
+void			list_erase(t_list *list, int pos, void (*del)(void *));
 
 // getter.c
-t_data			list_front(t_linked_list *list);
-t_data			list_back(t_linked_list *list);
-t_data			list_get_item(t_linked_list *list, int pos);
+t_data			list_front(t_list *list);
+t_data			list_back(t_list *list);
+t_data			list_get_item(t_list *list, int pos);
 
 // operation.c
-void			list_print(t_linked_list *list);
-void			list_reverse(t_linked_list *list);
-t_linked_list	*list_concatenate(t_linked_list *list1, t_linked_list *list2);
+void			list_print(t_list *list);
+void			list_reverse(t_list *list);
+t_list			*list_concatenate(t_list *list1, t_list *list2);
+char			*list_strjoin(t_list *list);
 
 #endif // LINKED_LIST_H

@@ -30,24 +30,24 @@ typedef struct s_deque
 	size_t	size;
 	t_node	*head;
 	t_node	*tail;
-}	t_deque;
+}	t_dynamic_deque;
 
 // utils.c
-void	dq_init(t_deque *dq);
-void	destroy(t_deque *dq);
-bool	is_empty(t_deque *dq);
-size_t	size(t_deque *dq);
+void	dq_init(t_dynamic_deque *dq);
+void	destroy(t_dynamic_deque *dq);
+bool	is_empty(t_dynamic_deque *dq);
+size_t	size(t_dynamic_deque *dq);
 
 // push.c
-void	push_front(t_deque *dq, t_data item);
-void	push_back(t_deque *dq, t_data item);
+void	push_front(t_dynamic_deque *dq, t_data item);
+void	push_back(t_dynamic_deque *dq, t_data item);
 
 // pop.c
-void	pop_front(t_deque *dq);
-void	pop_back(t_deque *dq);
+void	pop_front(t_dynamic_deque *dq);
+void	pop_back(t_dynamic_deque *dq);
 
 // getter.c
-t_data	front(t_deque *dq);
-t_data	back(t_deque *dq);
+t_data	front(t_dynamic_deque *dq);
+t_data	back(t_dynamic_deque *dq);
 
 #endif // DYNAMIC_DEQUE_H

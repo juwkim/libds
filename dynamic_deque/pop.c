@@ -6,13 +6,13 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 11:01:26 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/16 07:10:53 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/07 03:57:53 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dynamic_deque.h"
 
-void	pop_front(t_deque *dq)
+void	pop_front(t_dynamic_deque *dq)
 {
 	t_node *const	temp = dq->head;
 
@@ -30,7 +30,7 @@ void	pop_front(t_deque *dq)
 	free(temp);
 }
 
-void	pop_back(t_deque *dq)
+void	pop_back(t_dynamic_deque *dq)
 {
 	t_node *const	temp = dq->tail;
 

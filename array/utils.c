@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 09:45:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/07 05:25:51 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 05:31:04 by juwkim            #+#    #+#             */
+/*   Updated: 2023/02/07 06:09:30 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_linked_list.h"
+#include "array.h"
 
-void	pop_front(t_double_linked_list *list)
+void	array_init(t_array *array)
 {
-	erase(list, 0);
+	array->size = 0;
 }
 
-void	pop_back(t_double_linked_list *list)
+bool	array_is_empty(t_array *array)
 {
-	erase(list, -1);
+	return (array->size == 0);
 }
 
-void	erase(t_double_linked_list *list, int pos)
+bool	array_is_full(t_array *array)
 {
-	t_node *const	cur = get_iterator(list, pos);
-	t_node *const	temp = cur->next;
+	return (array->size == ARRAY_SIZE);
+}
 
-	cur->next = temp->next;
-	temp->next->prev = cur;
-	--list->size;
-	free(temp);
+size_t	array_size(t_array *array)
+{
+	return (array->size);
 }

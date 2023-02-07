@@ -5,30 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 09:45:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/07 05:25:51 by juwkim           ###   ########.fr       */
+/*   Created: 2023/01/14 05:51:16 by juwkim            #+#    #+#             */
+/*   Updated: 2023/02/07 06:05:52 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "double_linked_list.h"
+#include "array.h"
 
-void	pop_front(t_double_linked_list *list)
+void	array_pop_front(t_array *array)
 {
-	erase(list, 0);
+	array_erase(array, 0);
 }
 
-void	pop_back(t_double_linked_list *list)
+void	array_pop_back(t_array *array)
 {
-	erase(list, -1);
+	array_erase(array, array->size - 1);
 }
 
-void	erase(t_double_linked_list *list, int pos)
+void	array_erase(t_array *array, int pos)
 {
-	t_node *const	cur = get_iterator(list, pos);
-	t_node *const	temp = cur->next;
+	size_t	i;
 
-	cur->next = temp->next;
-	temp->next->prev = cur;
-	--list->size;
-	free(temp);
+	i = pos;
+	while (i < array->size - 1)
+	{
+		array->items[i] = array->items[i + 1];
+		++i;
+	}
+	--array->size;
 }
