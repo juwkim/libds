@@ -44,31 +44,31 @@ typedef struct s_linked_list
 }	t_list;
 
 // usils.c
-void			list_init(t_list *list);
-void			list_destroy(t_list *list, void (*del)(void *));
-bool			list_is_empty(t_list *list);
-size_t			list_size(t_list *list);
+bool	list_init(t_list *list);
+void	list_destroy(t_list *list, void (*del)(void *));
+bool	list_is_empty(t_list *list);
+size_t	list_size(t_list *list);
 
 // push.c
-void			list_push_front(t_list *list, t_data item);
-void			list_push_back(t_list *list, t_data item);
-void			list_insert(t_list *list, int pos, t_data item);
-t_node			*list_create_node(t_data item);
+bool	list_push_front(t_list *list, t_data item);
+bool	list_push_back(t_list *list, t_data item);
+bool	list_insert(t_list *list, int pos, t_data item);
+t_node	*list_create_node(t_data item);
 
 // pop.c
-void			list_pop_front(t_list *list, void (*del)(void *));
-void			list_pop_back(t_list *list, void (*del)(void *));
-void			list_erase(t_list *list, int pos, void (*del)(void *));
+void	list_pop_front(t_list *list, void (*del)(void *));
+void	list_pop_back(t_list *list, void (*del)(void *));
+void	list_erase(t_list *list, int pos, void (*del)(void *));
 
 // getter.c
-t_data			list_front(t_list *list);
-t_data			list_back(t_list *list);
-t_data			list_get_item(t_list *list, int pos);
+t_data	list_front(t_list *list);
+t_data	list_back(t_list *list);
+t_data	list_get_item(t_list *list, int pos);
 
 // operation.c
-void			list_print(t_list *list);
-void			list_reverse(t_list *list);
-t_list			*list_concatenate(t_list *list1, t_list *list2);
-char			*list_strjoin(t_list *list);
+void	list_print(t_list *list);
+void	list_reverse(t_list *list);
+t_list	*list_concatenate(t_list *list1, t_list *list2);
+char	*list_strjoin(t_list *list);
 
 #endif // LINKED_LIST_H
