@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# include "libft_header/ft_printf.h"
+# include "../../libft/includes/libft.h"
 
 # define ARRAY_SIZE 100000
 

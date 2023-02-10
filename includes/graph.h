@@ -16,7 +16,7 @@
 # include <stdlib.h>
 
 # include "deque.h"
-# include "libft_header/ft_printf.h"
+# include "../../libft/includes/libft.h"
 
 typedef struct s_node
 {

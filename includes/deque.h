@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# include "libft_header/ft_string.h"
-# include "libft_header/ft_memory.h"
+# include "../../libft/includes/libft.h"
+
 # define QUEUE_SIZE 10000
 
 typedef void *	t_dq_data;

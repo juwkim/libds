@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# include "libft_header/libft.h"
+# include "../../libft/includes/libft.h"
 
 # define DEF_COLOR	"\033[0;39m"
 # define GRAY		"\033[1;90m"

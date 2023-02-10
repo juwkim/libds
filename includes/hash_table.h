@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 06:23:38 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/03 23:33:28 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/11 06:43:53 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
-# include "libft_header/ft_string.h"
+# include "../../libft/includes/libft.h"
 # include "murmurhash3_x86_32.h"
 
 # define TABLE_SIZE 24593
