@@ -53,12 +53,14 @@ size_t	list_size(t_list *list);
 bool	list_push_front(t_list *list, t_data item);
 bool	list_push_back(t_list *list, t_data item);
 bool	list_insert(t_list *list, int pos, t_data item);
+t_node	*list_insert_list(t_list *list1, t_node *prev, t_list *list2);
 t_node	*list_create_node(t_data item);
 
 // pop.c
 void	list_pop_front(t_list *list, void (*del)(void *));
 void	list_pop_back(t_list *list, void (*del)(void *));
 void	list_erase(t_list *list, int pos, void (*del)(void *));
+void	list_pop_next(t_node *prev, void (*del)(void *));
 
 // getter.c
 t_data	list_front(t_list *list);

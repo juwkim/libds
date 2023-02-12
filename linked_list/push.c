@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 06:43:01 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/09 10:42:53 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/12 11:35:02 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ bool	list_insert(t_list *list, int pos, t_data item)
 		return (false);
 	new_node = list_create_node(item);
 	if (new_node == NULL)
+	{
+		free(item);
 		return (false);
+	}
 	cur = list->head;
 	while (pos--)
 		cur = cur->next;
@@ -50,4 +53,21 @@ bool	list_insert(t_list *list, int pos, t_data item)
 	cur->next = new_node;
 	++list->size;
 	return (true);
+}
+
+t_node	*list_insert_list(t_list *list1, t_node *prev, t_list *list2)
+{
+	t_node	*next;
+	t_node	*cur;
+
+	next = prev->next;
+	cur = list2->head->next;
+	prev->next = cur;
+	while (cur->next != NULL)
+	{
+		++list1->size;
+		cur = cur->next;
+	}
+	cur->next = next;
+	return (cur);
 }

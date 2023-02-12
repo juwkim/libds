@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/07 23:40:23 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/02/12 11:49:10 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ void	list_print(t_list *list)
 
 	cur = list->head->next;
 	printf(YELLOW"%s "DEF_COLOR, (char *) cur->item);
-	cur = cur->next;
-	while (cur != NULL)
+	while (cur->next != NULL)
 	{
-		printf(GREEN"%s "DEF_COLOR, (char *) cur->item);
 		cur = cur->next;
+		printf(GREEN"%s "DEF_COLOR, (char *) cur->item);
 	}
 }
 
