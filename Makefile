@@ -6,92 +6,104 @@
 #    By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 05:18:16 by juwkim            #+#    #+#              #
-#    Updated: 2023/02/09 11:53:48 by juwkim           ###   ########.fr        #
+#    Updated: 2023/03/01 07:12:40 by juwkim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Define the compiler and flags
+# ---------------------------------------------------------------------------- #
+#   Define the compiler and flags                                              #
+# ---------------------------------------------------------------------------- #
 
-CC					:=	cc
-CFLAGS				:=	-Wall -Wextra -Werror -march=native -O2 -pipe -fsanitize=address
-ARFLAGS				:= 	-rcs
+CC                  :=	cc
+CFLAGS              :=	-Wall -Wextra -Werror -march=native -O2 -pipe
+CPPFLAGS            :=	-I include
+ARFLAGS             := 	-rcs
 
-ifeq ($(shell uname -s), Linux)
-	CFLAGS += -Wno-unused-result -fsanitize=leak
+ifdef DEBUG
+	CFLAGS	+= -g -fsanitize=address,leak,undefined
 endif
 
-# Define the directories
+# ---------------------------------------------------------------------------- #
+#   Define the directories                                                     #
+# ---------------------------------------------------------------------------- #
 
-SRC_DIR				:=	array linked_list circular_linked_list double_linked_list
-SRC_DIR				+=	deque dynamic_deque
-SRC_DIR				+=	graph
-SRC_DIR				+=	binary_search_tree
-SRC_DIR				+=	max_heap
-SRC_DIR				+=	sorting
-SRC_DIR				+=	hashing
+SRC_DIR             :=	array list clist dlist deque ddeque graph
+SRC_DIR				+=	binary_search_tree max_heap sorting hashing
+OBJ_DIR             :=	object
 
-OBJ_DIR				:=	obj
-INC_DIR				:=	includes
+# ---------------------------------------------------------------------------- #
+#   Define the source files                                                    #
+# ---------------------------------------------------------------------------- #
 
-# Define the source files
+SRCS                :=	$(wildcard */*.c)
+OBJS                :=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-SRCS				:=	$(wildcard */*.c)
-OBJS				:=	$(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+# ---------------------------------------------------------------------------- #
+#   Define the variables for progress bar                                      #
+# ---------------------------------------------------------------------------- #
 
-# Define the variables for progress bar
+TOTAL_FILES         :=	$(shell echo $(SRCS) | wc -w)
+COMPILED_FILES      :=	0
+STEP                :=	100
 
-TOTAL_FILES			:=	$(shell find . -type f -name '*.c' | wc -l)
-COMPILED_FILES		:=	0
-STEP				:=	100
+# ---------------------------------------------------------------------------- #
+#   Define the name                                                            #
+# ---------------------------------------------------------------------------- #
 
-# Define the name
+NAME                :=	libds.a
 
-NAME				:=	libdatastructure.a
-
-# Define the rules
+# ---------------------------------------------------------------------------- #
+#   Define the rules                                                           #
+# ---------------------------------------------------------------------------- #
 
 all:
 	@$(MAKE) -j $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME): $(OBJS)
 	@$(AR) $(ARFLAGS) $@ $^
-	@printf "\n$(MAGENTA)[DATA_STRUCTURE] Make Success\n$(DEF_COLOR)"
+	@printf "\n$(MAGENTA)[LIBDS] Make Success\n$(DEF_COLOR)"
 
-$(OBJ_DIR)/%.o : %.c | dir_guard
-	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $^ -o $@
+$(OBJ_DIR)/%.o: %.c | dir_guard
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 	$(eval COMPILED_FILES = $(shell expr $(COMPILED_FILES) + 1))
 	$(eval PROGRESS = $(shell expr $(COMPILED_FILES) "*" $(STEP) / $(TOTAL_FILES)))
 	@printf "                                                                                                   \r"
-	@printf "$(YELLOW)[DATA_STRUCTURE] [%02d/%02d] ( %3d %%) Compiling $<\r$(DEF_COLOR)" $(COMPILED_FILES) $(TOTAL_FILES) $(PROGRESS)
+	@printf "$(YELLOW)[LIBDS] [%02d/%02d] ( %3d %%) Compiling $<\r$(DEF_COLOR)" $(COMPILED_FILES) $(TOTAL_FILES) $(PROGRESS)
+
+clean:
+	@$(RM) -r $(OBJ_DIR)
+	@printf "$(BLUE)[LIBDS] obj. files$(DEF_COLOR)$(GREEN)	=> Cleaned!\n$(DEF_COLOR)"
+
+fclean: clean
+	@$(RM) $(NAME)
+	@printf "$(CYAN)[LIBDS] exec. files$(DEF_COLOR)$(GREEN)	=> Cleaned!\n$(DEF_COLOR)"
+
+re: fclean
+	@$(MAKE) all
+	@printf "$(GREEN)Cleaned and Rebuilt everything for libDS!\n$(DEF_COLOR)"
 
 dir_guard:
 	@mkdir -p $(addprefix $(OBJ_DIR)/, $(SRC_DIR))
 
 norm:
-	@(norminette | grep Error) || (printf "$(GREEN)[DATA_STRUCTURE]:\tNorminette Success\n$(DEF_COLOR)")
+	@(norminette | grep Error) || (printf "$(GREEN)[LIBDS] Norminette Success\n$(DEF_COLOR)")
 
-clean:
-	@$(RM) -r $(OBJ_DIR)
-	@printf "$(BLUE)[DATA_STRUCTURE]:\tobj. dep. files$(DEF_COLOR)$(GREEN)	=> Cleaned!\n$(DEF_COLOR)"
+debug:
+	@$(MAKE) fclean
+	@$(MAKE) DEBUG=1 all
+	
+.PHONY:	all clean fclean re dir_guard norm debug
 
-fclean: clean
-	@$(RM) $(NAME)
-	@printf "$(CYAN)[DATA_STRUCTURE]:\texec. files$(DEF_COLOR)$(GREEN)	=> Cleaned!\n$(DEF_COLOR)"
+# ---------------------------------------------------------------------------- #
+#   Define the colors                                                          #
+# ---------------------------------------------------------------------------- #
 
-re: fclean
-	@$(MAKE) all
-	@printf "$(GREEN)Cleaned and Rebuilt everything for data_structure!\n$(DEF_COLOR)"
-
-.PHONY:	all clean fclean re dir_guard norm
-
-# Colors
-
-DEF_COLOR	=	\033[1;39m
-GRAY		=	\033[1;90m
-RED			=	\033[1;91m
-GREEN		=	\033[1;92m
-YELLOW		=	\033[1;93m
-BLUE		=	\033[1;94m
-MAGENTA		=	\033[1;95m
-CYAN		=	\033[1;96m
-WHITE		=	\033[1;97m
+DEF_COLOR           =	\033[1;39m
+GRAY                =	\033[1;90m
+RED                 =	\033[1;91m
+GREEN               =	\033[1;92m
+YELLOW              =	\033[1;93m
+BLUE                =	\033[1;94m
+MAGENTA             =	\033[1;95m
+CYAN                =	\033[1;96m
+WHITE               =	\033[1;97m

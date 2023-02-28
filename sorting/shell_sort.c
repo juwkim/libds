@@ -12,7 +12,7 @@
 
 #include "sorting.h"
 
-static void	sort_gap_insertion(t_data *list, int first, int last, int gap)
+static void	sort_gap_insertion(t_sort_data *list, int first, int last, int gap)
 {
 	int	i;
 	int	j;
@@ -33,7 +33,7 @@ static void	sort_gap_insertion(t_data *list, int first, int last, int gap)
 	}
 }
 
-void	shell_sort(t_data *list, int n)
+void	shell_sort(t_sort_data *list, int n)
 {
 	int	i;
 	int	gap;

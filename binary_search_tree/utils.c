@@ -6,18 +6,17 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:20:34 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/16 11:00:46 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 05:53:07 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "binary_search_tree.h"
 
-t_bst_node	*bst_create_node(t_data key)
+t_bst_node	*bst_create_node(t_bst_data key)
 {
 	t_bst_node *const	new_node = (t_bst_node *) malloc(sizeof(t_bst_node));
 
-	if (new_node == NULL)
-		exit(EXIT_FAILURE);
+	assert(new_node != NULL);
 	new_node->key = key;
 	new_node->left = NULL;
 	new_node->right = NULL;
@@ -44,7 +43,9 @@ size_t	bst_get_height(t_bst_node *root)
 		left_height = bst_get_height(root->left);
 	if (root->right != NULL)
 		right_height = bst_get_height(root->right);
-	return (ft_max(left_height, right_height) + 1);
+	if (left_height > right_height)
+		return (left_height + 1);
+	return (right_height + 1);
 }
 
 size_t	bst_count_nodes(t_bst_node	*root)

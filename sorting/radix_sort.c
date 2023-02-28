@@ -6,13 +6,13 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:32:59 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 18:09:19 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 07:04:00 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
-static void	counting(t_data *list, int n, int exp)
+static void	counting(t_sort_data *list, int n, int exp)
 {
 	int			count[10];
 	int			output[MAX_SIZE];
@@ -38,7 +38,7 @@ static void	counting(t_data *list, int n, int exp)
 		list[i] = output[i];
 }
 
-void	radix_sort(t_data *list, int n)
+void	radix_sort(t_sort_data *list, int n)
 {
 	int	i;
 	int	max;
@@ -47,7 +47,11 @@ void	radix_sort(t_data *list, int n)
 	i = 1;
 	max = list[0];
 	while (i < n)
-		max = ft_max(max, list[i]);
+	{
+		if (list[i] > max)
+			max = list[i];
+		++i;
+	}
 	exp = 1;
 	while (max >= exp)
 	{

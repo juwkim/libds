@@ -12,30 +12,28 @@
 
 #include "graph.h"
 
-void	init(t_graph *graph, size_t size)
+void	graph_init(t_graph *graph, size_t size)
 {
 	size_t	i;
 
 	graph->size = size;
-	graph->heads = (t_node **) malloc(size * sizeof(t_node *));
-	if (graph->heads == NULL)
-		exit(EXIT_FAILURE);
+	graph->heads = (t_graph_node **) malloc(size * sizeof(t_graph_node *));
+	assert(graph->heads != NULL);
 	i = 0;
 	while (i < size)
 	{
-		graph->heads[i] = (t_node *) malloc(sizeof(t_node));
-		if (graph->heads[i] == NULL)
-			exit(EXIT_FAILURE);
+		graph->heads[i] = (t_graph_node *) malloc(sizeof(t_graph_node));
+		assert(graph->heads[i] != NULL);
 		graph->heads[i]->next = NULL;
 		++i;
 	}
 }
 
-void	destroy(t_graph *graph)
+void	graph_destroy(t_graph *graph)
 {
-	size_t	i;
-	t_node	*cur;
-	t_node	*temp;
+	size_t			i;
+	t_graph_node	*cur;
+	t_graph_node	*temp;
 
 	i = 0;
 	while (i < graph->size)
@@ -52,22 +50,22 @@ void	destroy(t_graph *graph)
 	free(graph->heads);
 }
 
-t_node	*create_node(int id)
+t_graph_node	*graph_create_node(int id)
 {
-	t_node *const	new_node = (t_node *) malloc(sizeof(t_node));
+	t_graph_node *const	new_node = \
+		(t_graph_node *) malloc(sizeof(t_graph_node));
 
-	if (new_node == NULL)
-		exit(EXIT_FAILURE);
+	assert(new_node != NULL);
 	new_node->id = id;
 	new_node->next = NULL;
 	return (new_node);
 }
 
-void	add_edge(t_graph *graph, int src, int dst)
+void	graph_add_edge(t_graph *graph, int src, int dst)
 {
-	t_node			*cur;
-	t_node *const	new_node1 = create_node(src);
-	t_node *const	new_node2 = create_node(dst);
+	t_graph_node		*cur;
+	t_graph_node *const	new_node1 = graph_create_node(src);
+	t_graph_node *const	new_node2 = graph_create_node(dst);
 
 	cur = graph->heads[dst];
 	while (cur->next != NULL)
@@ -79,22 +77,22 @@ void	add_edge(t_graph *graph, int src, int dst)
 	cur->next = new_node2;
 }
 
-void	print(t_graph *graph)
+void	graph_print(t_graph *graph)
 {
-	size_t	i;
-	t_node	*cur;
+	size_t			i;
+	t_graph_node	*cur;
 
 	i = 0;
 	while (i < graph->size)
 	{
 		cur = graph->heads[i]->next;
-		ft_printf("Head #%d ", i);
+		printf("Head #%ld ", i);
 		while (cur != NULL)
 		{
-			ft_printf("%06d", cur->id);
+			printf("%06d", cur->id);
 			cur = cur->next;
 		}
-		ft_printf("\n");
+		printf("\n");
 		++i;
 	}
 }

@@ -12,7 +12,10 @@
 
 #include "binary_search_tree.h"
 
-t_bst_node	*bst_search(t_bst_node *root, t_data key)
+static t_bst_node	*__bst_min_value_node(t_bst_node *node);
+static t_bst_node	*__bst_succssor(t_bst_node *root);
+
+t_bst_node	*bst_search(t_bst_node *root, t_bst_data key)
 {
 	if (root == NULL || root->key == key)
 		return (root);
@@ -21,7 +24,7 @@ t_bst_node	*bst_search(t_bst_node *root, t_data key)
 	return (bst_search(root->right, key));
 }
 
-t_bst_node	*bst_insert(t_bst_node *root, t_data key)
+t_bst_node	*bst_insert(t_bst_node *root, t_bst_data key)
 {
 	if (root == NULL)
 		return (bst_create_node(key));
@@ -32,7 +35,20 @@ t_bst_node	*bst_insert(t_bst_node *root, t_data key)
 	return (root);
 }
 
-static t_bst_node	*min_value_node(t_bst_node *node)
+t_bst_node	*bst_remove(t_bst_node *root, t_bst_data key)
+{
+	if (root == NULL)
+		return (NULL);
+	if (key == root->key)
+		return (__bst_succssor(root));
+	if (key < root->key)
+		root->left = bst_remove(root->left, key);
+	else if (key > root->key)
+		root->right = bst_remove(root->right, key);
+	return (root);
+}
+
+static t_bst_node	*__bst_min_value_node(t_bst_node *node)
 {
 	t_bst_node	*cur;
 
@@ -42,7 +58,7 @@ static t_bst_node	*min_value_node(t_bst_node *node)
 	return (cur);
 }
 
-static t_bst_node	*succssor(t_bst_node *root)
+static t_bst_node	*__bst_succssor(t_bst_node *root)
 {
 	t_bst_node	*temp;
 
@@ -58,21 +74,8 @@ static t_bst_node	*succssor(t_bst_node *root)
 		free(root);
 		return (temp);
 	}
-	temp = min_value_node(root->right);
+	temp = __bst_min_value_node(root->right);
 	root->key = temp->key;
 	root->right = bst_remove(root->right, temp->key);
-	return (root);
-}
-
-t_bst_node	*bst_remove(t_bst_node *root, t_data key)
-{
-	if (root == NULL)
-		return (NULL);
-	if (key == root->key)
-		return (succssor(root));
-	if (key < root->key)
-		root->left = bst_remove(root->left, key);
-	else if (key > root->key)
-		root->right = bst_remove(root->right, key);
 	return (root);
 }

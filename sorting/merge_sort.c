@@ -6,13 +6,13 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:02:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/17 16:06:47 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 07:01:15 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
-static void	merge(t_data *list, int left, int mid, int right)
+static void	merge(t_sort_data *list, int left, int mid, int right)
 {
 	int	sorted[MAX_SIZE];
 	int	first;
@@ -40,7 +40,7 @@ static void	merge(t_data *list, int left, int mid, int right)
 		list[i] = sorted[i];
 }
 
-void	merge_sort(t_data *list, int left, int right)
+void	merge_sort(t_sort_data *list, int left, int right)
 {
 	int	mid;
 
@@ -52,7 +52,7 @@ void	merge_sort(t_data *list, int left, int right)
 	merge(list, left, mid, right);
 }
 
-void	iter_merge_sort(t_data *list, int n)
+void	iter_merge_sort(t_sort_data *list, int n)
 {
 	int	size;
 	int	left;
@@ -66,7 +66,10 @@ void	iter_merge_sort(t_data *list, int n)
 		while (left < n - 1)
 		{
 			mid = left + size - 1;
-			right = ft_min(left + 2 * size - 1, n - 1);
+			if (left + 2 * size - 1 > n - 1)
+				right = n - 1;
+			else
+				right = left + 2 * size - 1;
 			merge(list, left, mid, right);
 			left += 2 * size;
 		}

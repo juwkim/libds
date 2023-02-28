@@ -18,12 +18,12 @@ void	heap_insert(t_heap *heap, t_heap_data data, int priority)
 	int	parent;
 
 	idx = heap->size + 1;
-	parent = heap_get_parent(idx);
+	parent = __heap_get_parent(idx);
 	while (idx > 1 && priority > heap->items[parent].priority)
 	{
 		heap->items[idx] = heap->items[parent];
 		idx = parent;
-		parent = heap_get_parent(idx);
+		parent = __heap_get_parent(idx);
 	}
 	heap->items[idx].data = data;
 	heap->items[idx].priority = priority;
@@ -38,12 +38,12 @@ t_heap_data	heap_delete(t_heap *heap)
 	const t_heap_node	last = heap->items[heap->size];
 
 	parent = 1;
-	child = heap_get_higher_prioity_child(heap, parent);
+	child = __heap_get_higher_prioity_child(heap, parent);
 	while (child && last.priority < heap->items[child].priority)
 	{
 		heap->items[parent] = heap->items[child];
 		parent = child;
-		child = heap_get_higher_prioity_child(heap, parent);
+		child = __heap_get_higher_prioity_child(heap, parent);
 	}
 	heap->items[parent] = last;
 	--heap->size;

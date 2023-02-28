@@ -6,13 +6,21 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:36:12 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 16:39:48 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 07:04:40 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
-void	selection_sort(t_data *list, int n)
+static void	__swap(int *a, int *b)
+{
+	const int	tmp = *a;
+
+	*a = *b;
+	*b = tmp;
+}
+
+void	selection_sort(t_sort_data *list, int n)
 {
 	int	i;
 	int	j;
@@ -29,7 +37,7 @@ void	selection_sort(t_data *list, int n)
 				min = j;
 			++j;
 		}
-		ft_swap(list + i, list + min);
+		__swap(list + i, list + min);
 		++i;
 	}
 }

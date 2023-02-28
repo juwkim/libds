@@ -6,13 +6,13 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:45:34 by juwkim            #+#    #+#             */
-/*   Updated: 2023/01/14 16:51:10 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 06:58:58 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sorting.h"
 
-void	insertion_sort(t_data *list, int n)
+void	insertion_sort(t_sort_data *list, int n)
 {
 	int	i;
 	int	j;

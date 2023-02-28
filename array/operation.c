@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 00:16:46 by juwkim            #+#    #+#             */
-/*   Updated: 2023/02/07 23:32:53 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 05:53:57 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	array_print(t_array *array)
 
 	cur = 0;
 	while (cur < array->size)
-		ft_printf("%s\n", array->items[cur++]);
+		printf("%s\n", (char *) array->items[cur++]);
 }
 
 void	array_reverse(t_array *array)
@@ -44,8 +44,7 @@ t_array	*array_concatenate(t_array *array1, t_array *array2)
 	t_array *const	array = (t_array *) malloc(sizeof(t_array));
 	size_t			cur;
 
-	if (array == NULL)
-		exit(EXIT_FAILURE);
+	assert(array != NULL);
 	array_init(array);
 	cur = 0;
 	while (cur < array1->size)
