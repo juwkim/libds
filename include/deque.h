@@ -14,7 +14,6 @@
 # define DEQUE_H
 
 # include <stdio.h>
-# include <stddef.h>
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
@@ -22,7 +21,7 @@
 
 # define QUEUE_SIZE 10000
 
-typedef void *	t_dq_data;
+typedef int	t_dq_data;
 
 typedef struct s_deque
 {
@@ -33,10 +32,9 @@ typedef struct s_deque
 
 // utils.c
 void		dq_init(t_deque *dq);
-void		dq_destroy(t_deque *dq);
-bool		dq_is_empty(t_deque *dq);
-bool		dq_is_full(t_deque *dq);
-size_t		dq_size(t_deque *dq);
+bool		dq_is_empty(const t_deque *dq);
+bool		dq_is_full(const t_deque *dq);
+size_t		dq_size(const t_deque *dq);
 
 // push.c
 void		dq_push_front(t_deque *dq, t_dq_data item);
@@ -51,9 +49,5 @@ t_dq_data	dq_front(t_deque *dq);
 t_dq_data	dq_back(t_deque *dq);
 t_dq_data	dq_get_front_item(t_deque *dq, int pos);
 t_dq_data	dq_get_back_item(t_deque *dq, int pos);
-
-// operation.c
-void		dq_print(t_deque *dq);
-char		*dq_strjoin(t_deque *dq);
 
 #endif // DEQUE_H

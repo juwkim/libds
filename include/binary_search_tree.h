@@ -19,7 +19,7 @@
 
 # include "deque.h"
 
-typedef void *	t_bst_data;
+typedef int	t_bst_data;
 
 typedef struct s_bst_node
 {
@@ -43,6 +43,6 @@ t_bst_node	*bst_remove(t_bst_node *root, t_bst_data key);
 void		bst_inorder(t_bst_node *root);
 void		bst_preorder(t_bst_node *root);
 void		bst_postorder(t_bst_node *root);
-void		bst_levelorder(t_bst_node *root);
+// void		bst_levelorder(t_bst_node *root);
 
 #endif // BINARY_SEARCH_TREE_H

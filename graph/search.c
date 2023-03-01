@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 12:14:04 by juwkim            #+#    #+#             */
-/*   Updated: 2023/03/01 07:16:26 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 20:11:25 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	bfs(t_graph *graph)
 	visited[0] = true;
 	while (dq_is_empty(&dq) == false)
 	{
-		vertex = *(int *) dq_front(&dq);
+		vertex = dq_front(&dq);
 		dq_pop_front(&dq);
 		printf("%06d ", vertex);
 		cur = graph->heads[vertex]->next;
@@ -44,7 +44,7 @@ void	bfs(t_graph *graph)
 		{
 			if (visited[cur->id] == false)
 			{
-				dq_push_back(&dq, &cur->id);
+				dq_push_back(&dq, cur->id);
 				visited[cur->id] = true;
 			}
 			cur = cur->next;
@@ -64,7 +64,7 @@ void	dfs(t_graph *graph)
 	visited[0] = true;
 	while (dq_is_empty(&dq) == false)
 	{
-		vertex = *(int *) dq_front(&dq);
+		vertex = dq_front(&dq);
 		dq_pop_front(&dq);
 		printf("%06d ", vertex);
 		cur = graph->heads[vertex]->next;
@@ -72,7 +72,7 @@ void	dfs(t_graph *graph)
 		{
 			if (visited[cur->id] == false)
 			{
-				dq_push_front(&dq, &cur->id);
+				dq_push_front(&dq, cur->id);
 				visited[cur->id] = true;
 			}
 			cur = cur->next;

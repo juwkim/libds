@@ -6,7 +6,7 @@
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 06:40:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/03/01 06:47:54 by juwkim           ###   ########.fr       */
+/*   Updated: 2023/03/01 20:14:47 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	list_erase(t_list *list, int pos, void (*del)(void *))
 	temp = cur->next;
 	cur->next = cur->next->next;
 	--list->size;
-	del(temp->item);
+	if (del != NULL)
+		del(temp->item);
 	free(temp);
 }
 

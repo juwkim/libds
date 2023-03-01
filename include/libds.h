@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   libds.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juwkim <juwkim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 11:50:11 by juwkim            #+#    #+#             */
-/*   Updated: 2023/03/01 20:03:30 by juwkim           ###   ########.fr       */
+/*   Created: 2023/03/01 16:44:48 by juwkim            #+#    #+#             */
+/*   Updated: 2023/03/01 16:47:05 by juwkim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "deque.h"
+#ifndef LIBDS_H
+# define LIBDS_H
 
-void	dq_push_front(t_deque *dq, t_dq_data item)
-{
-	if (dq->head == 0)
-		dq->head = QUEUE_SIZE - 1;
-	else
-		--dq->head;
-	dq->items[dq->head] = item;
-}
+# include "array.h"
+# include "list.h"
+# include "clist.h"
+# include "dlist.h"
+# include "deque.h"
+# include "ddeque.h"
+# include "graph.h"
+# include "binary_search_tree.h"
+# include "max_heap.h"
+# include "sorting.h"
+# include "hash_table.h"
+# include "murmurhash3_x86_32.h"
 
-void	dq_push_back(t_deque *dq, t_dq_data item)
-{
-	dq->items[dq->tail] = item;
-	dq->tail = (dq->tail + 1) % QUEUE_SIZE;
-}
+#endif // LIBDS_H

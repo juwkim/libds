@@ -46,8 +46,8 @@ typedef struct s_list
 // usils.c
 void		list_init(t_list *list);
 void		list_destroy(t_list *list, void (*del)(void *));
-bool		list_is_empty(t_list *list);
-size_t		list_size(t_list *list);
+bool		list_is_empty(const t_list *list);
+size_t		list_size(const t_list *list);
 
 // push.c
 void		list_push_front(t_list *list, t_list_data item);
